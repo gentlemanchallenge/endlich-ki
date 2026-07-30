@@ -103,13 +103,13 @@
     </style>
   </defs>
 
-  <!-- ---------- Hintergrund ---------- -->
+  <!-- Hintergrund -->
   <rect width="1280" height="720" fill="url(#bg)"/>
   <rect width="1280" height="720" fill="url(#dots)" mask="url(#mGrid)"/>
   <ellipse cx="330" cy="360" rx="430" ry="400" fill="url(#glowGold)"/>
   <ellipse cx="740" cy="600" rx="420" ry="300" fill="url(#glowCool)"/>
 
-  <!-- ---------- Netzwerk ---------- -->
+  <!-- Netzwerk -->
   <g mask="url(#mFade)">
 
     <!-- Weit auslaufende Verbindungen in den Textbereich -->
