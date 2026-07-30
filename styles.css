@@ -157,7 +157,7 @@ header::before {
 
 /* Das weiche Nachziehen rechnet das Script; hier nur der Hinweis an den
    Compositor, welche Ebenen sich bewegen. */
-.hn-net, .hn-back, .hn-arm { will-change: transform; }
+.hn-net, .hn-back, .hn-glow, .hn-arm { will-change: transform; }
 
 .hn-wave { transform-origin: 330px 360px; animation: hnWave 4.8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 .hn-w2 { animation-delay: 1.6s; }

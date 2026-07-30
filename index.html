@@ -101,6 +101,12 @@
                      hier keine Nahtstellen, die aufreissen koennten. -->
                 <g class="hn-back">
                     <rect x="-40" y="-40" width="1360" height="800" fill="url(#hn-dots)" mask="url(#hn-mask-grid)"/>
+                </g>
+
+                <!-- Der Lichtschein geht vom Kern aus und muss deshalb mit dem Netz
+                     wandern, nicht dagegen. Etwas verzoegert, damit Licht traeger
+                     wirkt als das Netz selbst. -->
+                <g class="hn-glow">
                     <ellipse cx="330" cy="360" rx="520" ry="470" fill="url(#hn-glow-gold)"/>
                     <ellipse cx="760" cy="610" rx="460" ry="330" fill="url(#hn-glow-cool)"/>
                 </g>
@@ -707,7 +713,8 @@
 
     var net  = svg.querySelector('.hn-net');
     var back = svg.querySelector('.hn-back');
-    if (!net || !back) return;
+    var glow = svg.querySelector('.hn-glow');
+    if (!net || !back || !glow) return;
 
     var arms = Array.prototype.map.call(svg.querySelectorAll('.hn-arm'), function (el) {
         var a = (el.getAttribute('data-a') || '0,0').split(',');
@@ -726,7 +733,8 @@
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     var NET_X = 20,  NET_Y = 13;    // Drift des Netzes in SVG-Einheiten
-    var BACK_X = -9, BACK_Y = -6;   // Gegendrift des Hintergrunds
+    var BACK_X = -9, BACK_Y = -6;   // Gegendrift des Punktrasters
+    var GLOW = 0.65;                // Lichtschein folgt dem Netz, aber traeger
     var LEAF_DEG_X = 6.5, LEAF_DEG_Y = 4;   // Drehung der kurzen Arme in Grad
     var LONG_DEG_X = 1.5, LONG_DEG_Y = 0.9; // ... der weit auslaufenden Arme
     var EASE = 0.08;                // je kleiner, desto traeger das Nachziehen
@@ -740,6 +748,8 @@
             'translate(' + (curX * NET_X).toFixed(2) + ',' + (curY * NET_Y).toFixed(2) + ')');
         back.setAttribute('transform',
             'translate(' + (curX * BACK_X).toFixed(2) + ',' + (curY * BACK_Y).toFixed(2) + ')');
+        glow.setAttribute('transform',
+            'translate(' + (curX * NET_X * GLOW).toFixed(2) + ',' + (curY * NET_Y * GLOW).toFixed(2) + ')');
 
         for (var i = 0; i < arms.length; i++) {
             var a = arms[i];
