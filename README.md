@@ -9,10 +9,9 @@ die Seite ist per `noindex` von Suchmaschinen ausgeschlossen.
 
 | Datei | Inhalt |
 |---|---|
-| `index.html` | Komplette Landingpage (Hero, Painpoints, Zahlen, Lösung, Ablauf, Trainer, Preis, FAQ, Anmeldung) |
+| `index.html` | Komplette Landingpage (Hero, Painpoints, Zahlen, Lösung, Ablauf, Trainer, Preis, FAQ, Anmeldung). Enthält die Hero-Grafik als inline-SVG — sie muss inline liegen, damit die Maus-Parallaxe Zugriff auf das SVG-DOM hat. |
 | `styles.css` | Design-System (Navy/Gold, Montserrat/Cormorant Garamond/Barlow Condensed) — übernommen von werbestimme.de |
 | `impressum.html`, `datenschutz.html` | Rechtstexte, Entwurfsstand |
-| `bilder/agenten-netzwerk.svg` | Animierte Hero-Grafik (Agenten-Netzwerk), respektiert `prefers-reduced-motion` |
 | `bilder/` | Portrait für den Trainer-Abschnitt, Foto-Banner als og:image |
 | `Dockerfile`, `nginx.conf` | Statisches Hosting via nginx für Coolify |
 

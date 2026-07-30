@@ -43,7 +43,175 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero">
-        <img src="bilder/agenten-netzwerk.svg" alt="Illustration eines vernetzten KI-Agenten-Systems" class="hero-image" width="1280" height="720" fetchpriority="high">
+        <!-- Die Grafik liegt inline statt als <img>, weil ein SVG im img-Tag
+             abgeschottet ist und keine Mausereignisse empfaengt. Die Maus-Parallaxe
+             sitzt unten im Script und verschiebt .hn-far und .hn-core gegenlaeufig. -->
+        <div class="hero-art">
+            <svg class="hero-svg" id="heroNet" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice"
+                 role="img" aria-label="Illustration eines vernetzten KI-Agenten-Systems: ein zentraler Knoten steuert mehrere verbundene Agenten.">
+                <title>Vernetzte KI-Agenten</title>
+                <defs>
+                    <linearGradient id="hn-bg" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#0f1721"/>
+                        <stop offset="50%" stop-color="#1a2332"/>
+                        <stop offset="100%" stop-color="#243450"/>
+                    </linearGradient>
+                    <radialGradient id="hn-glow-gold" cx="0.5" cy="0.5" r="0.5">
+                        <stop offset="0%" stop-color="#e0c078" stop-opacity="0.62"/>
+                        <stop offset="28%" stop-color="#c9a66b" stop-opacity="0.26"/>
+                        <stop offset="60%" stop-color="#c9a66b" stop-opacity="0.09"/>
+                        <stop offset="100%" stop-color="#c9a66b" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="hn-glow-cool" cx="0.5" cy="0.5" r="0.5">
+                        <stop offset="0%" stop-color="#6f95d6" stop-opacity="0.22"/>
+                        <stop offset="100%" stop-color="#6f95d6" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="hn-hub" cx="0.35" cy="0.3" r="0.8">
+                        <stop offset="0%" stop-color="#f0dcaf"/>
+                        <stop offset="45%" stop-color="#d4b583"/>
+                        <stop offset="100%" stop-color="#b08d4f"/>
+                    </radialGradient>
+                    <pattern id="hn-dots" width="38" height="38" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="1.6" fill="#c9a66b" opacity="0.16"/>
+                    </pattern>
+                    <linearGradient id="hn-fade-right" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="42%" stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="68%" stop-color="#ffffff" stop-opacity="0.42"/>
+                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+                    </linearGradient>
+                    <mask id="hn-mask-fade"><rect width="1280" height="720" fill="url(#hn-fade-right)"/></mask>
+                    <linearGradient id="hn-fade-grid" x1="0" y1="0" x2="0.9" y2="0.8">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                    </linearGradient>
+                    <mask id="hn-mask-grid"><rect width="1280" height="720" fill="url(#hn-fade-grid)"/></mask>
+                    <filter id="hn-soft" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="5"/>
+                    </filter>
+                </defs>
+
+                <!-- Ruhende Hintergrundebene -->
+                <rect width="1280" height="720" fill="url(#hn-bg)"/>
+                <rect width="1280" height="720" fill="url(#hn-dots)" mask="url(#hn-mask-grid)"/>
+                <ellipse cx="330" cy="360" rx="520" ry="470" fill="url(#hn-glow-gold)"/>
+                <ellipse cx="760" cy="610" rx="460" ry="330" fill="url(#hn-glow-cool)"/>
+
+                <g mask="url(#hn-mask-fade)">
+                 <g transform="translate(330,360) scale(1.16) translate(-330,-360)">
+
+                  <!-- Aussenebene: bewegt sich am staerksten mit der Maus -->
+                  <g class="hn-far">
+                    <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
+                        <path d="M505,268 L790,150 L1010,196"/>
+                        <path d="M505,268 L742,330 L1046,300"/>
+                        <path d="M505,452 L800,470 L1030,430"/>
+                        <path d="M505,452 L770,580 L1000,556"/>
+                        <path d="M330,545 L560,650 L880,676"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.5">
+                        <circle cx="790" cy="150" r="4"/><circle cx="1010" cy="196" r="3"/>
+                        <circle cx="742" cy="330" r="4"/><circle cx="1046" cy="300" r="3"/>
+                        <circle cx="800" cy="470" r="4"/><circle cx="1030" cy="430" r="3"/>
+                        <circle cx="770" cy="580" r="4"/><circle cx="1000" cy="556" r="3"/>
+                        <circle cx="560" cy="650" r="4"/><circle cx="880" cy="676" r="3"/>
+                    </g>
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M330,175 L250,78"/><path d="M330,175 L412,84"/>
+                        <path d="M505,268 L636,188"/><path d="M505,268 L660,300"/>
+                        <path d="M505,452 L660,420"/><path d="M505,452 L636,532"/>
+                        <path d="M330,545 L250,642"/><path d="M330,545 L412,636"/>
+                        <path d="M155,452 L58,540"/><path d="M155,452 L36,420"/>
+                        <path d="M155,268 L36,300"/><path d="M155,268 L58,180"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="250" cy="78"  r="6" class="hn-twinkle"/>
+                        <circle cx="412" cy="84"  r="5" class="hn-twinkle hn-t3"/>
+                        <circle cx="636" cy="188" r="6" class="hn-twinkle hn-t2"/>
+                        <circle cx="660" cy="300" r="5" class="hn-twinkle hn-t4"/>
+                        <circle cx="660" cy="420" r="5" class="hn-twinkle hn-t2"/>
+                        <circle cx="636" cy="532" r="6" class="hn-twinkle hn-t3"/>
+                        <circle cx="250" cy="642" r="6" class="hn-twinkle hn-t4"/>
+                        <circle cx="412" cy="636" r="5" class="hn-twinkle"/>
+                        <circle cx="58"  cy="540" r="5" class="hn-twinkle hn-t3"/>
+                        <circle cx="36"  cy="420" r="6" class="hn-twinkle hn-t2"/>
+                        <circle cx="36"  cy="300" r="5" class="hn-twinkle hn-t4"/>
+                        <circle cx="58"  cy="180" r="6" class="hn-twinkle"/>
+                    </g>
+                  </g>
+
+                  <!-- Kernebene: bewegt sich schwach und gegenlaeufig.
+                       Die Nahtstellen zur Aussenebene liegen unter den Agenten-Knoten
+                       und bleiben dadurch verdeckt. -->
+                  <g class="hn-core">
+                    <g class="hn-link" stroke-width="1" opacity="0.3" stroke-dasharray="5 9">
+                        <path d="M330,175 L505,268 L505,452 L330,545 L155,452 L155,268 Z"/>
+                    </g>
+                    <g class="hn-link" stroke-width="2" opacity="0.62">
+                        <path d="M330,360 L330,175"/><path d="M330,360 L505,268"/>
+                        <path d="M330,360 L505,452"/><path d="M330,360 L330,545"/>
+                        <path d="M330,360 L155,452"/><path d="M330,360 L155,268"/>
+                    </g>
+                    <g class="hn-node-lead">
+                        <circle cx="330" cy="175" r="15"/><circle cx="505" cy="268" r="15"/>
+                        <circle cx="505" cy="452" r="15"/><circle cx="330" cy="545" r="15"/>
+                        <circle cx="155" cy="452" r="15"/><circle cx="155" cy="268" r="15"/>
+                    </g>
+                    <g class="hn-ring" stroke-width="1.4" opacity="0.5">
+                        <circle cx="330" cy="175" r="24"/><circle cx="505" cy="268" r="24"/>
+                        <circle cx="505" cy="452" r="24"/><circle cx="330" cy="545" r="24"/>
+                        <circle cx="155" cy="452" r="24"/><circle cx="155" cy="268" r="24"/>
+                    </g>
+
+                    <g class="hn-pulse">
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s" path="M330,360 L330,175"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.45s" path="M330,360 L505,268"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0.45s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.9s" path="M330,360 L505,452"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0.9s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.35s" path="M330,360 L330,545"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="1.35s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.8s" path="M330,360 L155,452"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="1.8s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="2.25s" path="M330,360 L155,268"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="2.25s"/>
+                        </circle>
+                    </g>
+
+                    <circle class="hn-ring hn-wave" cx="330" cy="360" r="40" stroke-width="2"/>
+                    <circle class="hn-ring hn-wave hn-w2" cx="330" cy="360" r="40" stroke-width="2"/>
+                    <circle class="hn-ring hn-wave hn-w3" cx="330" cy="360" r="40" stroke-width="2"/>
+
+                    <g class="hn-breathe">
+                        <circle cx="330" cy="360" r="52" fill="#c9a66b" opacity="0.28" filter="url(#hn-soft)"/>
+                        <circle cx="330" cy="360" r="40" fill="none" stroke="#c9a66b" stroke-width="1.2" opacity="0.65"/>
+                        <circle cx="330" cy="360" r="30" fill="url(#hn-hub)"/>
+                        <circle cx="330" cy="360" r="30" fill="none" stroke="#f7ead0" stroke-width="1" opacity="0.55"/>
+                        <g stroke="#1a2332" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.85">
+                            <path d="M330,349 L320,368"/><path d="M330,349 L340,368"/><path d="M320,368 L340,368"/>
+                        </g>
+                        <circle cx="330" cy="348" r="4.2" fill="#1a2332"/>
+                        <circle cx="319" cy="369" r="3.4" fill="#1a2332"/>
+                        <circle cx="341" cy="369" r="3.4" fill="#1a2332"/>
+                    </g>
+                  </g>
+
+                 </g>
+                </g>
+            </svg>
+        </div>
         <div class="hero-overlay">
             <div class="hero-eyebrow">Online-Live-Seminar &middot; 1 Tag &middot; für Unternehmen</div>
             <h1 class="hero-title">Ihr Team baut seine eigenen KI-Agenten.<br><em>An einem Tag.</em></h1>
@@ -465,6 +633,70 @@
 </div>
 
 <script>
+// Maus-Parallaxe der Hero-Grafik.
+// Zwei Ebenen bewegen sich gegenlaeufig: das blaue Aussennetz deutlich, der
+// goldene Kern schwach in die Gegenrichtung. Das erzeugt Tiefe, statt dass die
+// ganze Grafik nur mitschwenkt. Die Ebenen sind so geschnitten, dass ihre
+// gemeinsamen Nahtstellen unter den Agenten-Knoten liegen — der relative
+// Versatz bleibt kleiner als deren Radius und ist daher verdeckt.
+(function () {
+    var svg  = document.getElementById('heroNet');
+    var hero = document.querySelector('.hero');
+    if (!svg || !hero) return;
+
+    var far  = svg.querySelector('.hn-far');
+    var core = svg.querySelector('.hn-core');
+    if (!far || !core) return;
+
+    // Kein Effekt ohne echten Zeiger (Touch) und nicht bei reduzierter Bewegung.
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var FAR_X = 12, FAR_Y = 8;      // Ausschlag der Aussenebene in SVG-Einheiten
+    var CORE_X = -2.5, CORE_Y = -1.6; // Kern, gegenlaeufig
+    var EASE = 0.07;                 // je kleiner, desto traeger das Nachziehen
+
+    var targetX = 0, targetY = 0;   // -1 .. 1
+    var curX = 0, curY = 0;
+    var raf = null;
+
+    function apply() {
+        far.setAttribute('transform',
+            'translate(' + (curX * FAR_X).toFixed(2) + ',' + (curY * FAR_Y).toFixed(2) + ')');
+        core.setAttribute('transform',
+            'translate(' + (curX * CORE_X).toFixed(2) + ',' + (curY * CORE_Y).toFixed(2) + ')');
+    }
+
+    function tick() {
+        curX += (targetX - curX) * EASE;
+        curY += (targetY - curY) * EASE;
+        apply();
+        if (Math.abs(targetX - curX) > 0.002 || Math.abs(targetY - curY) > 0.002) {
+            raf = requestAnimationFrame(tick);
+        } else {
+            curX = targetX; curY = targetY;
+            apply();
+            raf = null;
+        }
+    }
+
+    function start() { if (raf === null) raf = requestAnimationFrame(tick); }
+
+    hero.addEventListener('pointermove', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        var r = hero.getBoundingClientRect();
+        targetX = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width  - 0.5) * 2));
+        targetY = Math.max(-1, Math.min(1, ((e.clientY - r.top)  / r.height - 0.5) * 2));
+        start();
+    }, { passive: true });
+
+    // Zurueck in die Ruhelage, sobald die Maus den Hero verlaesst.
+    hero.addEventListener('pointerleave', function () {
+        targetX = 0; targetY = 0;
+        start();
+    }, { passive: true });
+})();
+
 // Sticky-CTA einblenden, sobald der Hero aus dem Blickfeld ist
 (function () {
     var sticky = document.getElementById('stickyCta');
