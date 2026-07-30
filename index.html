@@ -153,14 +153,14 @@
                         <path d="M330,360 L155,452"/><path d="M330,360 L155,268"/>
                     </g>
                     <g class="hn-node-lead">
-                        <circle cx="330" cy="175" r="15"/><circle cx="505" cy="268" r="15"/>
-                        <circle cx="505" cy="452" r="15"/><circle cx="330" cy="545" r="15"/>
-                        <circle cx="155" cy="452" r="15"/><circle cx="155" cy="268" r="15"/>
+                        <circle cx="330" cy="175" r="16"/><circle cx="505" cy="268" r="16"/>
+                        <circle cx="505" cy="452" r="16"/><circle cx="330" cy="545" r="16"/>
+                        <circle cx="155" cy="452" r="16"/><circle cx="155" cy="268" r="16"/>
                     </g>
                     <g class="hn-ring" stroke-width="1.4" opacity="0.5">
-                        <circle cx="330" cy="175" r="24"/><circle cx="505" cy="268" r="24"/>
-                        <circle cx="505" cy="452" r="24"/><circle cx="330" cy="545" r="24"/>
-                        <circle cx="155" cy="452" r="24"/><circle cx="155" cy="268" r="24"/>
+                        <circle cx="330" cy="175" r="25"/><circle cx="505" cy="268" r="25"/>
+                        <circle cx="505" cy="452" r="25"/><circle cx="330" cy="545" r="25"/>
+                        <circle cx="155" cy="452" r="25"/><circle cx="155" cy="268" r="25"/>
                     </g>
 
                     <g class="hn-pulse">
@@ -652,8 +652,12 @@
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var FAR_X = 12, FAR_Y = 8;      // Ausschlag der Aussenebene in SVG-Einheiten
-    var CORE_X = -2.5, CORE_Y = -1.6; // Kern, gegenlaeufig
+    // Ausschlag in SVG-Einheiten. Die Obergrenze ergibt sich aus der Geometrie:
+    // der relative Versatz beider Ebenen (hypot(11+2.2, 6+1.2) = 15.0) muss
+    // kleiner bleiben als der Radius der Agenten-Knoten (16), sonst schauen die
+    // Enden der blauen Linien unter den Knoten hervor.
+    var FAR_X = 11, FAR_Y = 6;
+    var CORE_X = -2.2, CORE_Y = -1.2;
     var EASE = 0.07;                 // je kleiner, desto traeger das Nachziehen
 
     var targetX = 0, targetY = 0;   // -1 .. 1
