@@ -152,7 +152,9 @@ header::before {
     align-items: flex-start;
     justify-content: center;
     padding: 2.5rem 2.8rem;
-    background: linear-gradient(to left, rgba(26, 35, 50, 0.94) 0%, rgba(26, 35, 50, 0.86) 55%, transparent 100%);
+    /* Die Hero-Grafik blendet nach rechts selbst schon aus, deshalb reicht ein
+       weicherer Verlauf — so bleibt das Netzwerk hinter der Headline sichtbar. */
+    background: linear-gradient(to left, rgba(26, 35, 50, 0.90) 0%, rgba(26, 35, 50, 0.72) 58%, transparent 100%);
 }
 .hero-eyebrow {
     font-size: 0.7rem;

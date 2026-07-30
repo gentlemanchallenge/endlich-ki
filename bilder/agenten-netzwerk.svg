@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720"
+     role="img"
+     aria-label="Illustration eines vernetzten KI-Agenten-Systems: ein zentraler Knoten steuert mehrere verbundene Agenten.">
+  <title>Vernetzte KI-Agenten</title>
+
+  <defs>
+    <!-- Hintergrund -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#0f1721"/>
+      <stop offset="50%"  stop-color="#1a2332"/>
+      <stop offset="100%" stop-color="#243450"/>
+    </linearGradient>
+
+    <!-- Lichtschein hinter dem zentralen Knoten -->
+    <radialGradient id="glowGold" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%"   stop-color="#c9a66b" stop-opacity="0.45"/>
+      <stop offset="45%"  stop-color="#c9a66b" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#c9a66b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowCool" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%"   stop-color="#6f95d6" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#6f95d6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Kern des Hubs -->
+    <radialGradient id="hubFill" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%"   stop-color="#f0dcaf"/>
+      <stop offset="45%"  stop-color="#d4b583"/>
+      <stop offset="100%" stop-color="#b08d4f"/>
+    </radialGradient>
+
+    <!-- Punktraster -->
+    <pattern id="dots" width="38" height="38" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#c9a66b" opacity="0.16"/>
+    </pattern>
+
+    <!-- Alles blendet nach rechts aus, damit die Headline gut lesbar bleibt -->
+    <linearGradient id="fadeRight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="42%"  stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="68%"  stop-color="#ffffff" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+    <mask id="mFade">
+      <rect width="1280" height="720" fill="url(#fadeRight)"/>
+    </mask>
+
+    <!-- Raster zusätzlich nach unten ausblenden -->
+    <linearGradient id="fadeGrid" x1="0" y1="0" x2="0.9" y2="0.8">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="mGrid">
+      <rect width="1280" height="720" fill="url(#fadeGrid)"/>
+    </mask>
+
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+
+    <style>
+      .link      { stroke: #c9a66b; fill: none; stroke-linecap: round; }
+      .link-far  { stroke: #7f9bc4; fill: none; stroke-linecap: round; }
+      .node-lead { fill: #d4b583; }
+      .node-leaf { fill: #7f9bc4; }
+      .ring      { fill: none; stroke: #c9a66b; }
+
+      /* Impulse, die vom Hub nach außen wandern */
+      .pulse { fill: #f0dcaf; }
+
+      .wave {
+        transform-origin: 330px 360px;
+        animation: wave 4.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      .wave-2 { animation-delay: 1.6s; }
+      .wave-3 { animation-delay: 3.2s; }
+      @keyframes wave {
+        0%   { transform: scale(1);   opacity: 0.55; }
+        70%  { transform: scale(3.4); opacity: 0;    }
+        100% { transform: scale(3.4); opacity: 0;    }
+      }
+
+      .breathe { animation: breathe 5s ease-in-out infinite; transform-origin: 330px 360px; }
+      @keyframes breathe {
+        0%, 100% { transform: scale(1);    }
+        50%      { transform: scale(1.045); }
+      }
+
+      .twinkle   { animation: twinkle 4s ease-in-out infinite; }
+      .twinkle-2 { animation-delay: 1.1s; }
+      .twinkle-3 { animation-delay: 2.3s; }
+      .twinkle-4 { animation-delay: 3.1s; }
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.45; }
+        50%      { opacity: 1;    }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .pulse { display: none; }
+        .wave, .breathe, .twinkle { animation: none; }
+        .wave { opacity: 0.25; }
+      }
+    </style>
+  </defs>
+
+  <!-- ---------- Hintergrund ---------- -->
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#dots)" mask="url(#mGrid)"/>
+  <ellipse cx="330" cy="360" rx="430" ry="400" fill="url(#glowGold)"/>
+  <ellipse cx="740" cy="600" rx="420" ry="300" fill="url(#glowCool)"/>
+
+  <!-- ---------- Netzwerk ---------- -->
+  <g mask="url(#mFade)">
+
+    <!-- Weit auslaufende Verbindungen in den Textbereich -->
+    <g class="link-far" stroke-width="1.1" opacity="0.5">
+      <path d="M505,268 L790,150 L1010,196"/>
+      <path d="M505,268 L742,330 L1046,300"/>
+      <path d="M505,452 L800,470 L1030,430"/>
+      <path d="M505,452 L770,580 L1000,556"/>
+      <path d="M330,545 L560,650 L880,676"/>
+    </g>
+    <g class="node-leaf" opacity="0.5">
+      <circle cx="790" cy="150" r="4"/>
+      <circle cx="1010" cy="196" r="3"/>
+      <circle cx="742" cy="330" r="4"/>
+      <circle cx="1046" cy="300" r="3"/>
+      <circle cx="800" cy="470" r="4"/>
+      <circle cx="1030" cy="430" r="3"/>
+      <circle cx="770" cy="580" r="4"/>
+      <circle cx="1000" cy="556" r="3"/>
+      <circle cx="560" cy="650" r="4"/>
+      <circle cx="880" cy="676" r="3"/>
+    </g>
+
+    <!-- Äußere Blattknoten -->
+    <g class="link-far" stroke-width="1.2" opacity="0.6">
+      <path d="M330,175 L250,78"/>
+      <path d="M330,175 L412,84"/>
+      <path d="M505,268 L636,188"/>
+      <path d="M505,268 L660,300"/>
+      <path d="M505,452 L660,420"/>
+      <path d="M505,452 L636,532"/>
+      <path d="M330,545 L250,642"/>
+      <path d="M330,545 L412,636"/>
+      <path d="M155,452 L58,540"/>
+      <path d="M155,452 L36,420"/>
+      <path d="M155,268 L36,300"/>
+      <path d="M155,268 L58,180"/>
+    </g>
+
+    <!-- Ringverbindungen zwischen den Agenten -->
+    <g class="link" stroke-width="1" opacity="0.3" stroke-dasharray="5 9">
+      <path d="M330,175 L505,268 L505,452 L330,545 L155,452 L155,268 Z"/>
+    </g>
+
+    <!-- Speichen vom Hub zu den Agenten -->
+    <g class="link" stroke-width="2" opacity="0.62">
+      <path d="M330,360 L330,175"/>
+      <path d="M330,360 L505,268"/>
+      <path d="M330,360 L505,452"/>
+      <path d="M330,360 L330,545"/>
+      <path d="M330,360 L155,452"/>
+      <path d="M330,360 L155,268"/>
+    </g>
+
+    <!-- Blattknoten -->
+    <g class="node-leaf" opacity="0.85">
+      <circle cx="250" cy="78"  r="6" class="twinkle"/>
+      <circle cx="412" cy="84"  r="5" class="twinkle twinkle-3"/>
+      <circle cx="636" cy="188" r="6" class="twinkle twinkle-2"/>
+      <circle cx="660" cy="300" r="5" class="twinkle twinkle-4"/>
+      <circle cx="660" cy="420" r="5" class="twinkle twinkle-2"/>
+      <circle cx="636" cy="532" r="6" class="twinkle twinkle-3"/>
+      <circle cx="250" cy="642" r="6" class="twinkle twinkle-4"/>
+      <circle cx="412" cy="636" r="5" class="twinkle"/>
+      <circle cx="58"  cy="540" r="5" class="twinkle twinkle-3"/>
+      <circle cx="36"  cy="420" r="6" class="twinkle twinkle-2"/>
+      <circle cx="36"  cy="300" r="5" class="twinkle twinkle-4"/>
+      <circle cx="58"  cy="180" r="6" class="twinkle"/>
+    </g>
+
+    <!-- Agenten-Knoten -->
+    <g>
+      <g class="node-lead">
+        <circle cx="330" cy="175" r="13"/>
+        <circle cx="505" cy="268" r="13"/>
+        <circle cx="505" cy="452" r="13"/>
+        <circle cx="330" cy="545" r="13"/>
+        <circle cx="155" cy="452" r="13"/>
+        <circle cx="155" cy="268" r="13"/>
+      </g>
+      <g class="ring" stroke-width="1.4" opacity="0.5">
+        <circle cx="330" cy="175" r="23"/>
+        <circle cx="505" cy="268" r="23"/>
+        <circle cx="505" cy="452" r="23"/>
+        <circle cx="330" cy="545" r="23"/>
+        <circle cx="155" cy="452" r="23"/>
+        <circle cx="155" cy="268" r="23"/>
+      </g>
+    </g>
+
+    <!-- Impulse, die vom Hub zu den Agenten laufen -->
+    <g class="pulse">
+      <circle r="4">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s"    path="M330,360 L330,175"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0s"/>
+      </circle>
+      <circle r="4">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.45s" path="M330,360 L505,268"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0.45s"/>
+      </circle>
+      <circle r="4">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.9s"  path="M330,360 L505,452"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0.9s"/>
+      </circle>
+      <circle r="4">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.35s" path="M330,360 L330,545"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="1.35s"/>
+      </circle>
+      <circle r="4">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.8s"  path="M330,360 L155,452"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="1.8s"/>
+      </circle>
+      <circle r="4">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="2.25s" path="M330,360 L155,268"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="2.25s"/>
+      </circle>
+    </g>
+
+    <!-- Zentraler Knoten -->
+    <g>
+      <circle class="ring wave"   cx="330" cy="360" r="40" stroke-width="2"/>
+      <circle class="ring wave wave-2" cx="330" cy="360" r="40" stroke-width="2"/>
+      <circle class="ring wave wave-3" cx="330" cy="360" r="40" stroke-width="2"/>
+
+      <g class="breathe">
+        <circle cx="330" cy="360" r="52" fill="#c9a66b" opacity="0.28" filter="url(#soft)"/>
+        <circle cx="330" cy="360" r="40" fill="none" stroke="#c9a66b" stroke-width="1.2" opacity="0.65"/>
+        <circle cx="330" cy="360" r="30" fill="url(#hubFill)"/>
+        <circle cx="330" cy="360" r="30" fill="none" stroke="#f7ead0" stroke-width="1" opacity="0.55"/>
+        <!-- kleines Knotenzeichen im Kern -->
+        <g stroke="#1a2332" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.85">
+          <path d="M330,349 L320,368"/>
+          <path d="M330,349 L340,368"/>
+          <path d="M320,368 L340,368"/>
+        </g>
+        <circle cx="330" cy="348" r="4.2" fill="#1a2332"/>
+        <circle cx="319" cy="369" r="3.4" fill="#1a2332"/>
+        <circle cx="341" cy="369" r="3.4" fill="#1a2332"/>
+      </g>
+    </g>
+  </g>
+</svg>
