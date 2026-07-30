@@ -13,8 +13,9 @@
 
     <!-- Lichtschein hinter dem zentralen Knoten -->
     <radialGradient id="glowGold" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%"   stop-color="#c9a66b" stop-opacity="0.45"/>
-      <stop offset="45%"  stop-color="#c9a66b" stop-opacity="0.13"/>
+      <stop offset="0%"   stop-color="#e0c078" stop-opacity="0.62"/>
+      <stop offset="28%"  stop-color="#c9a66b" stop-opacity="0.26"/>
+      <stop offset="60%"  stop-color="#c9a66b" stop-opacity="0.09"/>
       <stop offset="100%" stop-color="#c9a66b" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glowCool" cx="0.5" cy="0.5" r="0.5">
@@ -106,11 +107,13 @@
   <!-- Hintergrund -->
   <rect width="1280" height="720" fill="url(#bg)"/>
   <rect width="1280" height="720" fill="url(#dots)" mask="url(#mGrid)"/>
-  <ellipse cx="330" cy="360" rx="430" ry="400" fill="url(#glowGold)"/>
-  <ellipse cx="740" cy="600" rx="420" ry="300" fill="url(#glowCool)"/>
+  <ellipse cx="330" cy="360" rx="520" ry="470" fill="url(#glowGold)"/>
+  <ellipse cx="760" cy="610" rx="460" ry="330" fill="url(#glowCool)"/>
 
-  <!-- Netzwerk -->
+  <!-- Netzwerk. Innere Gruppe skaliert um den Hub, damit es die linke
+       Bildhaelfte fuellt; die Maske bleibt davon unberuehrt. -->
   <g mask="url(#mFade)">
+   <g transform="translate(330,360) scale(1.16) translate(-330,-360)">
 
     <!-- Weit auslaufende Verbindungen in den Textbereich -->
     <g class="link-far" stroke-width="1.1" opacity="0.5">
@@ -250,5 +253,6 @@
         <circle cx="341" cy="369" r="3.4" fill="#1a2332"/>
       </g>
     </g>
+   </g>
   </g>
 </svg>
