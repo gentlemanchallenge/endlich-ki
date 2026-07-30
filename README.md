@@ -12,7 +12,8 @@ die Seite ist per `noindex` von Suchmaschinen ausgeschlossen.
 | `index.html` | Komplette Landingpage (Hero, Painpoints, Zahlen, Lösung, Ablauf, Trainer, Preis, FAQ, Anmeldung) |
 | `styles.css` | Design-System (Navy/Gold, Montserrat/Cormorant Garamond/Barlow Condensed) — übernommen von werbestimme.de |
 | `impressum.html`, `datenschutz.html` | Rechtstexte, Entwurfsstand |
-| `bilder/` | Hero-Banner und Portrait |
+| `bilder/agenten-netzwerk.svg` | Animierte Hero-Grafik (Agenten-Netzwerk), respektiert `prefers-reduced-motion` |
+| `bilder/` | Portrait für den Trainer-Abschnitt, Foto-Banner als og:image |
 | `Dockerfile`, `nginx.conf` | Statisches Hosting via nginx für Coolify |
 
 ## Deployment
