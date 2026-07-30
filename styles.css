@@ -71,7 +71,7 @@ header::before {
 .header-right { display: flex; align-items: center; gap: 1.5rem; }
 .header-nav { display: flex; gap: 1.4rem; }
 .header-nav a {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.88);
     text-decoration: none;
     font-size: 0.82rem;
     font-weight: 500;
@@ -136,6 +136,8 @@ header::before {
 }
 .hero-image {
     width: 100%;
+    /* height: auto ueberschreibt das height-Attribut im HTML — sonst wird das Bild verzerrt. */
+    height: auto;
     display: block;
     object-fit: cover;
     object-position: center 28%;
@@ -393,7 +395,7 @@ header::before {
 /* ---------- Trainer ---------- */
 .trainer-grid { display: grid; grid-template-columns: 240px 1fr; gap: 2.5rem; align-items: start; margin-top: 1.5rem; }
 .trainer-photo { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px var(--shadow); }
-.trainer-photo img { width: 100%; display: block; }
+.trainer-photo img { width: 100%; height: auto; display: block; }
 .trainer-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
