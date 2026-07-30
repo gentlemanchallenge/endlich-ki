@@ -155,9 +155,9 @@ header::before {
 .hn-ring      { fill: none; stroke: var(--accent-gold); }
 .hn-pulse     { fill: #f0dcaf; }
 
-/* Weiches Nachziehen der Parallaxe uebernimmt das Script; hier nur der
-   Uebergang zurueck in die Ruhelage, wenn die Maus den Hero verlaesst. */
-.hn-far, .hn-core { will-change: transform; }
+/* Das weiche Nachziehen rechnet das Script; hier nur der Hinweis an den
+   Compositor, welche Ebenen sich bewegen. */
+.hn-net, .hn-back, .hn-arm { will-change: transform; }
 
 .hn-wave { transform-origin: 330px 360px; animation: hnWave 4.8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 .hn-w2 { animation-delay: 1.6s; }

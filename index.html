@@ -80,69 +80,128 @@
                         <stop offset="68%" stop-color="#ffffff" stop-opacity="0.42"/>
                         <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
                     </linearGradient>
-                    <mask id="hn-mask-fade"><rect width="1280" height="720" fill="url(#hn-fade-right)"/></mask>
+                    <!-- Die Maskenflaechen reichen ueber das Bild hinaus, damit
+                         verschobene Ebenen an den Raendern nicht abgeschnitten werden. -->
+                    <mask id="hn-mask-fade"><rect x="-60" y="-60" width="1400" height="840" fill="url(#hn-fade-right)"/></mask>
                     <linearGradient id="hn-fade-grid" x1="0" y1="0" x2="0.9" y2="0.8">
                         <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
                         <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
                     </linearGradient>
-                    <mask id="hn-mask-grid"><rect width="1280" height="720" fill="url(#hn-fade-grid)"/></mask>
+                    <mask id="hn-mask-grid"><rect x="-60" y="-60" width="1400" height="840" fill="url(#hn-fade-grid)"/></mask>
                     <filter id="hn-soft" x="-50%" y="-50%" width="200%" height="200%">
                         <feGaussianBlur stdDeviation="5"/>
                     </filter>
                 </defs>
 
-                <!-- Ruhende Hintergrundebene -->
+                <!-- Grundflaeche, bleibt immer stehen -->
                 <rect width="1280" height="720" fill="url(#hn-bg)"/>
-                <rect width="1280" height="720" fill="url(#hn-dots)" mask="url(#hn-mask-grid)"/>
-                <ellipse cx="330" cy="360" rx="520" ry="470" fill="url(#hn-glow-gold)"/>
-                <ellipse cx="760" cy="610" rx="460" ry="330" fill="url(#hn-glow-cool)"/>
+
+                <!-- Hintergrundebene: driftet der Maus entgegen und erzeugt so die
+                     Tiefenwirkung. Sie beruehrt kein anderes Element, daher gibt es
+                     hier keine Nahtstellen, die aufreissen koennten. -->
+                <g class="hn-back">
+                    <rect x="-40" y="-40" width="1360" height="800" fill="url(#hn-dots)" mask="url(#hn-mask-grid)"/>
+                    <ellipse cx="330" cy="360" rx="520" ry="470" fill="url(#hn-glow-gold)"/>
+                    <ellipse cx="760" cy="610" rx="460" ry="330" fill="url(#hn-glow-cool)"/>
+                </g>
 
                 <g mask="url(#hn-mask-fade)">
-                 <g transform="translate(330,360) scale(1.16) translate(-330,-360)">
+                 <g class="hn-net">
+                  <g transform="translate(330,360) scale(1.16) translate(-330,-360)">
 
-                  <!-- Aussenebene: bewegt sich am staerksten mit der Maus -->
-                  <g class="hn-far">
+                  <!-- Jede blaue Linie haengt in einer Arm-Gruppe, die um ihren
+                       Ankerpunkt im goldenen Knoten rotiert (data-a = Ankerkoordinate,
+                       data-k = individueller Faktor gegen zu gleichfoermige Bewegung).
+                       Weil der Anker selbst der Drehpunkt ist, loest sich die Linie
+                       vom Knoten nie ab — egal wie gross der Ausschlag wird.
+                       hn-arm-long bekommt einen kleineren Winkel, sonst wuerden die
+                       weit auslaufenden Enden viel zu grosse Wege zuruecklegen. -->
+
+                  <g class="hn-arm hn-arm-long" data-a="505,268" data-k="1">
                     <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
                         <path d="M505,268 L790,150 L1010,196"/>
                         <path d="M505,268 L742,330 L1046,300"/>
-                        <path d="M505,452 L800,470 L1030,430"/>
-                        <path d="M505,452 L770,580 L1000,556"/>
-                        <path d="M330,545 L560,650 L880,676"/>
                     </g>
                     <g class="hn-node-leaf" opacity="0.5">
                         <circle cx="790" cy="150" r="4"/><circle cx="1010" cy="196" r="3"/>
                         <circle cx="742" cy="330" r="4"/><circle cx="1046" cy="300" r="3"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm hn-arm-long" data-a="505,452" data-k="-0.85">
+                    <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
+                        <path d="M505,452 L800,470 L1030,430"/>
+                        <path d="M505,452 L770,580 L1000,556"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.5">
                         <circle cx="800" cy="470" r="4"/><circle cx="1030" cy="430" r="3"/>
                         <circle cx="770" cy="580" r="4"/><circle cx="1000" cy="556" r="3"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm hn-arm-long" data-a="330,545" data-k="0.9">
+                    <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
+                        <path d="M330,545 L560,650 L880,676"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.5">
                         <circle cx="560" cy="650" r="4"/><circle cx="880" cy="676" r="3"/>
-                    </g>
-                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
-                        <path d="M330,175 L250,78"/><path d="M330,175 L412,84"/>
-                        <path d="M505,268 L636,188"/><path d="M505,268 L660,300"/>
-                        <path d="M505,452 L660,420"/><path d="M505,452 L636,532"/>
-                        <path d="M330,545 L250,642"/><path d="M330,545 L412,636"/>
-                        <path d="M155,452 L58,540"/><path d="M155,452 L36,420"/>
-                        <path d="M155,268 L36,300"/><path d="M155,268 L58,180"/>
-                    </g>
-                    <g class="hn-node-leaf" opacity="0.85">
-                        <circle cx="250" cy="78"  r="6" class="hn-twinkle"/>
-                        <circle cx="412" cy="84"  r="5" class="hn-twinkle hn-t3"/>
-                        <circle cx="636" cy="188" r="6" class="hn-twinkle hn-t2"/>
-                        <circle cx="660" cy="300" r="5" class="hn-twinkle hn-t4"/>
-                        <circle cx="660" cy="420" r="5" class="hn-twinkle hn-t2"/>
-                        <circle cx="636" cy="532" r="6" class="hn-twinkle hn-t3"/>
-                        <circle cx="250" cy="642" r="6" class="hn-twinkle hn-t4"/>
-                        <circle cx="412" cy="636" r="5" class="hn-twinkle"/>
-                        <circle cx="58"  cy="540" r="5" class="hn-twinkle hn-t3"/>
-                        <circle cx="36"  cy="420" r="6" class="hn-twinkle hn-t2"/>
-                        <circle cx="36"  cy="300" r="5" class="hn-twinkle hn-t4"/>
-                        <circle cx="58"  cy="180" r="6" class="hn-twinkle"/>
                     </g>
                   </g>
 
-                  <!-- Kernebene: bewegt sich schwach und gegenlaeufig.
-                       Die Nahtstellen zur Aussenebene liegen unter den Agenten-Knoten
-                       und bleiben dadurch verdeckt. -->
+                  <g class="hn-arm" data-a="330,175" data-k="1.1">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M330,175 L250,78"/><path d="M330,175 L412,84"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="250" cy="78" r="6" class="hn-twinkle"/>
+                        <circle cx="412" cy="84" r="5" class="hn-twinkle hn-t3"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="505,268" data-k="-0.9">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M505,268 L636,188"/><path d="M505,268 L660,300"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="636" cy="188" r="6" class="hn-twinkle hn-t2"/>
+                        <circle cx="660" cy="300" r="5" class="hn-twinkle hn-t4"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="505,452" data-k="1.2">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M505,452 L660,420"/><path d="M505,452 L636,532"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="660" cy="420" r="5" class="hn-twinkle hn-t2"/>
+                        <circle cx="636" cy="532" r="6" class="hn-twinkle hn-t3"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="330,545" data-k="-1.05">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M330,545 L250,642"/><path d="M330,545 L412,636"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="250" cy="642" r="6" class="hn-twinkle hn-t4"/>
+                        <circle cx="412" cy="636" r="5" class="hn-twinkle"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="155,452" data-k="0.95">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M155,452 L58,540"/><path d="M155,452 L36,420"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="58" cy="540" r="5" class="hn-twinkle hn-t3"/>
+                        <circle cx="36" cy="420" r="6" class="hn-twinkle hn-t2"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="155,268" data-k="-1.15">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M155,268 L36,300"/><path d="M155,268 L58,180"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="36" cy="300" r="5" class="hn-twinkle hn-t4"/>
+                        <circle cx="58" cy="180" r="6" class="hn-twinkle"/>
+                    </g>
+                  </g>
+
+                  <!-- Kern: liegt ueber den Ankerpunkten und deckt sie ab -->
                   <g class="hn-core">
                     <g class="hn-link" stroke-width="1" opacity="0.3" stroke-dasharray="5 9">
                         <path d="M330,175 L505,268 L505,452 L330,545 L155,452 L155,268 Z"/>
@@ -208,6 +267,7 @@
                     </g>
                   </g>
 
+                  </g>
                  </g>
                 </g>
             </svg>
@@ -633,42 +693,62 @@
 </div>
 
 <script>
-// Maus-Parallaxe der Hero-Grafik.
-// Zwei Ebenen bewegen sich gegenlaeufig: das blaue Aussennetz deutlich, der
-// goldene Kern schwach in die Gegenrichtung. Das erzeugt Tiefe, statt dass die
-// ganze Grafik nur mitschwenkt. Die Ebenen sind so geschnitten, dass ihre
-// gemeinsamen Nahtstellen unter den Agenten-Knoten liegen — der relative
-// Versatz bleibt kleiner als deren Radius und ist daher verdeckt.
+// Maus-Bewegung der Hero-Grafik. Drei ineinandergreifende Bewegungen:
+//   1. Das gesamte Netz driftet der Maus nach.
+//   2. Der Hintergrund driftet entgegengesetzt und erzeugt so Tiefe.
+//   3. Jeder blaue Arm rotiert um seinen Ankerpunkt im goldenen Knoten.
+// Weil der Anker der Drehpunkt ist, bleibt jede Linie fest mit ihrem Knoten
+// verbunden — deshalb darf der Ausschlag hier deutlich groesser sein, als es
+// bei einer reinen Verschiebung moeglich waere.
 (function () {
     var svg  = document.getElementById('heroNet');
     var hero = document.querySelector('.hero');
     if (!svg || !hero) return;
 
-    var far  = svg.querySelector('.hn-far');
-    var core = svg.querySelector('.hn-core');
-    if (!far || !core) return;
+    var net  = svg.querySelector('.hn-net');
+    var back = svg.querySelector('.hn-back');
+    if (!net || !back) return;
+
+    var arms = Array.prototype.map.call(svg.querySelectorAll('.hn-arm'), function (el) {
+        var a = (el.getAttribute('data-a') || '0,0').split(',');
+        return {
+            el: el,
+            ax: +a[0],
+            ay: +a[1],
+            k: parseFloat(el.getAttribute('data-k')) || 1,
+            long: /(^|\s)hn-arm-long(\s|$)/.test(el.getAttribute('class') || '')
+        };
+    });
+    if (!arms.length) return;
 
     // Kein Effekt ohne echten Zeiger (Touch) und nicht bei reduzierter Bewegung.
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    // Ausschlag in SVG-Einheiten. Die Obergrenze ergibt sich aus der Geometrie:
-    // der relative Versatz beider Ebenen (hypot(11+2.2, 6+1.2) = 15.0) muss
-    // kleiner bleiben als der Radius der Agenten-Knoten (16), sonst schauen die
-    // Enden der blauen Linien unter den Knoten hervor.
-    var FAR_X = 11, FAR_Y = 6;
-    var CORE_X = -2.2, CORE_Y = -1.2;
-    var EASE = 0.07;                 // je kleiner, desto traeger das Nachziehen
+    var NET_X = 20,  NET_Y = 13;    // Drift des Netzes in SVG-Einheiten
+    var BACK_X = -9, BACK_Y = -6;   // Gegendrift des Hintergrunds
+    var LEAF_DEG_X = 6.5, LEAF_DEG_Y = 4;   // Drehung der kurzen Arme in Grad
+    var LONG_DEG_X = 1.5, LONG_DEG_Y = 0.9; // ... der weit auslaufenden Arme
+    var EASE = 0.08;                // je kleiner, desto traeger das Nachziehen
 
     var targetX = 0, targetY = 0;   // -1 .. 1
     var curX = 0, curY = 0;
     var raf = null;
 
     function apply() {
-        far.setAttribute('transform',
-            'translate(' + (curX * FAR_X).toFixed(2) + ',' + (curY * FAR_Y).toFixed(2) + ')');
-        core.setAttribute('transform',
-            'translate(' + (curX * CORE_X).toFixed(2) + ',' + (curY * CORE_Y).toFixed(2) + ')');
+        net.setAttribute('transform',
+            'translate(' + (curX * NET_X).toFixed(2) + ',' + (curY * NET_Y).toFixed(2) + ')');
+        back.setAttribute('transform',
+            'translate(' + (curX * BACK_X).toFixed(2) + ',' + (curY * BACK_Y).toFixed(2) + ')');
+
+        for (var i = 0; i < arms.length; i++) {
+            var a = arms[i];
+            var dx = a.long ? LONG_DEG_X : LEAF_DEG_X;
+            var dy = a.long ? LONG_DEG_Y : LEAF_DEG_Y;
+            var deg = (curX * dx + curY * dy) * a.k;
+            a.el.setAttribute('transform',
+                'rotate(' + deg.toFixed(3) + ',' + a.ax + ',' + a.ay + ')');
+        }
     }
 
     function tick() {
