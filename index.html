@@ -88,20 +88,6 @@
                         <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
                     </linearGradient>
                     <mask id="hn-mask-grid"><rect x="-60" y="-60" width="1400" height="840" fill="url(#hn-fade-grid)"/></mask>
-
-                    <!-- Entfernungsblende: je weiter ein Knoten vom Kern entfernt ist,
-                         desto schwaecher wird er. Dadurch hat das Netz keinen sichtbaren
-                         Rand, es loest sich nach aussen auf. -->
-                    <radialGradient id="hn-fade-far" gradientUnits="userSpaceOnUse" cx="330" cy="360" r="700">
-                        <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
-                        <stop offset="0.30" stop-color="#ffffff" stop-opacity="1"/>
-                        <stop offset="0.52" stop-color="#ffffff" stop-opacity="0.72"/>
-                        <stop offset="0.76" stop-color="#ffffff" stop-opacity="0.3"/>
-                        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-                    </radialGradient>
-                    <mask id="hn-mask-far">
-                        <rect x="-500" y="-500" width="2400" height="1800" fill="url(#hn-fade-far)"/>
-                    </mask>
                     <filter id="hn-soft" x="-50%" y="-50%" width="200%" height="200%">
                         <feGaussianBlur stdDeviation="5"/>
                     </filter>
@@ -128,7 +114,6 @@
                 <g mask="url(#hn-mask-fade)">
                  <g class="hn-net">
                   <g transform="translate(330,360) scale(1.16) translate(-330,-360)">
-                   <g mask="url(#hn-mask-far)">
 
                   <!-- Jede blaue Linie haengt in einer Arm-Gruppe, die um ihren
                        Ankerpunkt im goldenen Knoten rotiert (data-a = Ankerkoordinate,
@@ -138,305 +123,88 @@
                        hn-arm-long bekommt einen kleineren Winkel, sonst wuerden die
                        weit auslaufenden Enden viel zu grosse Wege zuruecklegen. -->
 
-                  <g class="hn-arm" data-a="330,175" data-k="1.1" data-d="4">
-                  <g class="hn-link-far" stroke-width="1.4" opacity="0.75">
-                  <path d="M330,175 L212.4,91.3"/>
-                  <path d="M330,175 L415.1,96"/>
-                  </g>
-                  <g class="hn-arm" data-a="212.4,91.3" data-k="0.85" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M212.4,91.3 L45.6,46.3"/>
-                  <path d="M212.4,91.3 L285,-33.9"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M45.6,46.3 L-126.3,-96"/>
-                  <path d="M285,-33.9 L244.4,-252.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="-126.3" cy="-96" r="2.6"/>
-                  <circle cx="244.4" cy="-252.6" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="45.6" cy="46.3" r="4"/>
-                  <circle cx="285" cy="-33.9" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.0s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M212.4,91.3 L45.6,46.3"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.0s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="415.1,96" data-k="-1.1" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M415.1,96 L321.4,-78.2"/>
-                  <path d="M415.1,96 L586.4,10.6"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M321.4,-78.2 L342.9,-250.7"/>
-                  <path d="M586.4,10.6 L689.2,-151.1"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="342.9" cy="-250.7" r="2.6"/>
-                  <circle cx="689.2" cy="-151.1" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="321.4" cy="-78.2" r="4"/>
-                  <circle cx="586.4" cy="10.6" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.0s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M415.1,96 L321.4,-78.2"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.0s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.8">
-                  <circle cx="212.4" cy="91.3" r="6" class="hn-twinkle"/>
-                  <circle cx="415.1" cy="96" r="6" class="hn-twinkle hn-t2"/>
-                  </g>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.0s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M330,175 L212.4,91.3"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.0s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.0s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M330,175 L415.1,96"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.0s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="505,268" data-k="-0.9" data-d="4">
-                  <g class="hn-link-far" stroke-width="1.4" opacity="0.75">
-                  <path d="M505,268 L555.2,150.3"/>
-                  <path d="M505,268 L605.1,317"/>
-                  </g>
-                  <g class="hn-arm" data-a="555.2,150.3" data-k="-0.85" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M555.2,150.3 L527.6,13"/>
-                  <path d="M555.2,150.3 L706,198.1"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M527.6,13 L632.6,-121"/>
-                  <path d="M706,198.1 L872.6,111.1"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="632.6" cy="-121" r="2.6"/>
-                  <circle cx="872.6" cy="111.1" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="527.6" cy="13" r="4"/>
-                  <circle cx="706" cy="198.1" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.45s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M555.2,150.3 L527.6,13"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.45s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="605.1,317" data-k="1.1" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M605.1,317 L665.3,161"/>
-                  <path d="M605.1,317 L711.7,415.8"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M665.3,161 L881.3,74.9"/>
-                  <path d="M711.7,415.8 L882.2,456.8"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="881.3" cy="74.9" r="2.6"/>
-                  <circle cx="882.2" cy="456.8" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="665.3" cy="161" r="4"/>
-                  <circle cx="711.7" cy="415.8" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.45s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M605.1,317 L665.3,161"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.45s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.8">
-                  <circle cx="555.2" cy="150.3" r="6" class="hn-twinkle hn-t3"/>
-                  <circle cx="605.1" cy="317" r="6" class="hn-twinkle hn-t4"/>
-                  </g>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.45s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M505,268 L555.2,150.3"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.45s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.45s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M505,268 L605.1,317"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.45s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="505,452" data-k="1.2" data-d="4">
-                  <g class="hn-link-far" stroke-width="1.4" opacity="0.75">
-                  <path d="M505,452 L642.6,400.7"/>
-                  <path d="M505,452 L533.6,563.4"/>
-                  </g>
-                  <g class="hn-arm" data-a="642.6,400.7" data-k="0.85" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M642.6,400.7 L778.1,268"/>
-                  <path d="M642.6,400.7 L718.7,546.4"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M778.1,268 L993.1,252.1"/>
-                  <path d="M718.7,546.4 L905.2,603.4"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="993.1" cy="252.1" r="2.6"/>
-                  <circle cx="905.2" cy="603.4" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="778.1" cy="268" r="4"/>
-                  <circle cx="718.7" cy="546.4" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.9s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M642.6,400.7 L778.1,268"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.9s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="533.6,563.4" data-k="-1.1" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M533.6,563.4 L720.5,526.5"/>
-                  <path d="M533.6,563.4 L531.8,710.5"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M720.5,526.5 L939.4,587.4"/>
-                  <path d="M531.8,710.5 L648.7,894.4"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="939.4" cy="587.4" r="2.6"/>
-                  <circle cx="648.7" cy="894.4" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="720.5" cy="526.5" r="4"/>
-                  <circle cx="531.8" cy="710.5" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.9s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M533.6,563.4 L720.5,526.5"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.9s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.8">
-                  <circle cx="642.6" cy="400.7" r="6" class="hn-twinkle"/>
-                  <circle cx="533.6" cy="563.4" r="6" class="hn-twinkle hn-t2"/>
-                  </g>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.9s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M505,452 L642.6,400.7"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.9s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.9s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M505,452 L533.6,563.4"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.9s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="330,545" data-k="-1.05" data-d="4">
-                  <g class="hn-link-far" stroke-width="1.4" opacity="0.75">
-                  <path d="M330,545 L439.9,639.8"/>
-                  <path d="M330,545 L213.1,627.8"/>
-                  </g>
-                  <g class="hn-arm" data-a="439.9,639.8" data-k="-0.85" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M439.9,639.8 L593.1,708.8"/>
-                  <path d="M439.9,639.8 L326.3,789.8"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M593.1,708.8 L679.8,854.2"/>
-                  <path d="M326.3,789.8 L310.7,970.1"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="679.8" cy="854.2" r="2.6"/>
-                  <circle cx="310.7" cy="970.1" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="593.1" cy="708.8" r="4"/>
-                  <circle cx="326.3" cy="789.8" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.35s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M439.9,639.8 L593.1,708.8"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.35s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="213.1,627.8" data-k="1.1" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M213.1,627.8 L281.9,807.2"/>
-                  <path d="M213.1,627.8 L43.9,666.6"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M281.9,807.2 L270.4,998.4"/>
-                  <path d="M43.9,666.6 L-84.9,803.8"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="270.4" cy="998.4" r="2.6"/>
-                  <circle cx="-84.9" cy="803.8" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="281.9" cy="807.2" r="4"/>
-                  <circle cx="43.9" cy="666.6" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.35s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M213.1,627.8 L281.9,807.2"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.35s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.8">
-                  <circle cx="439.9" cy="639.8" r="6" class="hn-twinkle hn-t3"/>
-                  <circle cx="213.1" cy="627.8" r="6" class="hn-twinkle hn-t4"/>
-                  </g>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.35s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M330,545 L439.9,639.8"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.35s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.35s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M330,545 L213.1,627.8"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.35s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="155,452" data-k="0.95" data-d="4">
-                  <g class="hn-link-far" stroke-width="1.4" opacity="0.75">
-                  <path d="M155,452 L131.7,563.2"/>
-                  <path d="M155,452 L12.2,390.7"/>
-                  </g>
-                  <g class="hn-arm" data-a="131.7,563.2" data-k="0.85" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M131.7,563.2 L140.5,716.4"/>
-                  <path d="M131.7,563.2 L-10.8,542.5"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M140.5,716.4 L47.5,927.4"/>
-                  <path d="M-10.8,542.5 L-162,624.4"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="47.5" cy="927.4" r="2.6"/>
-                  <circle cx="-162" cy="624.4" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="140.5" cy="716.4" r="4"/>
-                  <circle cx="-10.8" cy="542.5" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.8s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M131.7,563.2 L140.5,716.4"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.8s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="12.2,390.7" data-k="-1.1" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M12.2,390.7 L-112.3,542.6"/>
-                  <path d="M12.2,390.7 L-111.6,295.7"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M-112.3,542.6 L-310,617.6"/>
-                  <path d="M-111.6,295.7 L-326,232.3"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="-310" cy="617.6" r="2.6"/>
-                  <circle cx="-326" cy="232.3" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="-112.3" cy="542.6" r="4"/>
-                  <circle cx="-111.6" cy="295.7" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.8s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M12.2,390.7 L-112.3,542.6"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.8s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.8">
-                  <circle cx="131.7" cy="563.2" r="6" class="hn-twinkle"/>
-                  <circle cx="12.2" cy="390.7" r="6" class="hn-twinkle hn-t2"/>
-                  </g>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.8s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M155,452 L131.7,563.2"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.8s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.8s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M155,452 L12.2,390.7"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.8s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="155,268" data-k="-1.15" data-d="4">
-                  <g class="hn-link-far" stroke-width="1.4" opacity="0.75">
-                  <path d="M155,268 L49.7,305.8"/>
-                  <path d="M155,268 L133.1,152.8"/>
-                  </g>
-                  <g class="hn-arm" data-a="49.7,305.8" data-k="-0.85" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M49.7,305.8 L-62,417.2"/>
-                  <path d="M49.7,305.8 L-55.6,150.1"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M-62,417.2 L-274.2,422.2"/>
-                  <path d="M-55.6,150.1 L-214.7,80.4"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="-274.2" cy="422.2" r="2.6"/>
-                  <circle cx="-214.7" cy="80.4" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="-62" cy="417.2" r="4"/>
-                  <circle cx="-55.6" cy="150.1" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="2.25s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M49.7,305.8 L-62,417.2"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="2.25s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-arm" data-a="133.1,152.8" data-k="1.1" data-d="3">
-                  <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
-                  <path d="M133.1,152.8 L-28.9,158"/>
-                  <path d="M133.1,152.8 L135.8,-9.6"/>
-                  </g>
-                  <g class="hn-link-far" stroke-width="0.9" opacity="0.32">
-                  <path d="M-28.9,158 L-234,38"/>
-                  <path d="M135.8,-9.6 L54,-195.4"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.34">
-                  <circle cx="-234" cy="38" r="2.6"/>
-                  <circle cx="54" cy="-195.4" r="2.6"/>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.52">
-                  <circle cx="-28.9" cy="158" r="4"/>
-                  <circle cx="135.8" cy="-9.6" r="4"/>
-                  </g>
-                  <circle class="hn-dot" r="2.4" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="2.25s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.66;1" path="M133.1,152.8 L-28.9,158"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="2.25s" values="0;0;1;1;0;0" keyTimes="0;0.42;0.455;0.625;0.66;1"/></circle>
-                  </g>
-                  <g class="hn-node-leaf" opacity="0.8">
-                  <circle cx="49.7" cy="305.8" r="6" class="hn-twinkle hn-t3"/>
-                  <circle cx="133.1" cy="152.8" r="6" class="hn-twinkle hn-t4"/>
-                  </g>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="2.25s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M155,268 L49.7,305.8"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="2.25s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
-                  <circle class="hn-dot" r="3.2" fill="#a9c6ee" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="2.25s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2;0.42;1" path="M155,268 L133.1,152.8"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="2.25s" values="0;0;1;1;0;0" keyTimes="0;0.2;0.235;0.385;0.42;1"/></circle>
+                  <g class="hn-arm hn-arm-long" data-a="505,268" data-k="1">
+                    <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
+                        <path d="M505,268 L790,150 L1010,196"/>
+                        <path d="M505,268 L742,330 L1046,300"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.5">
+                        <circle cx="790" cy="150" r="4"/><circle cx="1010" cy="196" r="3"/>
+                        <circle cx="742" cy="330" r="4"/><circle cx="1046" cy="300" r="3"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm hn-arm-long" data-a="505,452" data-k="-0.85">
+                    <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
+                        <path d="M505,452 L800,470 L1030,430"/>
+                        <path d="M505,452 L770,580 L1000,556"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.5">
+                        <circle cx="800" cy="470" r="4"/><circle cx="1030" cy="430" r="3"/>
+                        <circle cx="770" cy="580" r="4"/><circle cx="1000" cy="556" r="3"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm hn-arm-long" data-a="330,545" data-k="0.9">
+                    <g class="hn-link-far" stroke-width="1.1" opacity="0.5">
+                        <path d="M330,545 L560,650 L880,676"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.5">
+                        <circle cx="560" cy="650" r="4"/><circle cx="880" cy="676" r="3"/>
+                    </g>
+                  </g>
+
+                  <g class="hn-arm" data-a="330,175" data-k="1.1">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M330,175 L250,78"/><path d="M330,175 L412,84"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="250" cy="78" r="6" class="hn-twinkle"/>
+                        <circle cx="412" cy="84" r="5" class="hn-twinkle hn-t3"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="505,268" data-k="-0.9">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M505,268 L636,188"/><path d="M505,268 L660,300"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="636" cy="188" r="6" class="hn-twinkle hn-t2"/>
+                        <circle cx="660" cy="300" r="5" class="hn-twinkle hn-t4"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="505,452" data-k="1.2">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M505,452 L660,420"/><path d="M505,452 L636,532"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="660" cy="420" r="5" class="hn-twinkle hn-t2"/>
+                        <circle cx="636" cy="532" r="6" class="hn-twinkle hn-t3"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="330,545" data-k="-1.05">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M330,545 L250,642"/><path d="M330,545 L412,636"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="250" cy="642" r="6" class="hn-twinkle hn-t4"/>
+                        <circle cx="412" cy="636" r="5" class="hn-twinkle"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="155,452" data-k="0.95">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M155,452 L58,540"/><path d="M155,452 L36,420"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="58" cy="540" r="5" class="hn-twinkle hn-t3"/>
+                        <circle cx="36" cy="420" r="6" class="hn-twinkle hn-t2"/>
+                    </g>
+                  </g>
+                  <g class="hn-arm" data-a="155,268" data-k="-1.15">
+                    <g class="hn-link-far" stroke-width="1.2" opacity="0.6">
+                        <path d="M155,268 L36,300"/><path d="M155,268 L58,180"/>
+                    </g>
+                    <g class="hn-node-leaf" opacity="0.85">
+                        <circle cx="36" cy="300" r="5" class="hn-twinkle hn-t4"/>
+                        <circle cx="58" cy="180" r="6" class="hn-twinkle"/>
+                    </g>
                   </g>
 
                   <!-- Kern: liegt ueber den Ankerpunkten und deckt sie ab -->
@@ -461,12 +229,30 @@
                     </g>
 
                     <g class="hn-pulse">
-                        <circle class="hn-dot" r="4" fill="#f0dcaf" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.0s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.0;0.2;1" path="M330,360 L330,175"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.0s" values="0;0;1;1;0;0" keyTimes="0;0.0;0.035;0.165;0.2;1"/></circle>
-                        <circle class="hn-dot" r="4" fill="#f0dcaf" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.45s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.0;0.2;1" path="M330,360 L505,268"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.45s" values="0;0;1;1;0;0" keyTimes="0;0.0;0.035;0.165;0.2;1"/></circle>
-                        <circle class="hn-dot" r="4" fill="#f0dcaf" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="0.9s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.0;0.2;1" path="M330,360 L505,452"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="0.9s" values="0;0;1;1;0;0" keyTimes="0;0.0;0.035;0.165;0.2;1"/></circle>
-                        <circle class="hn-dot" r="4" fill="#f0dcaf" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.35s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.0;0.2;1" path="M330,360 L330,545"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.35s" values="0;0;1;1;0;0" keyTimes="0;0.0;0.035;0.165;0.2;1"/></circle>
-                        <circle class="hn-dot" r="4" fill="#f0dcaf" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="1.8s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.0;0.2;1" path="M330,360 L155,452"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="1.8s" values="0;0;1;1;0;0" keyTimes="0;0.0;0.035;0.165;0.2;1"/></circle>
-                        <circle class="hn-dot" r="4" fill="#f0dcaf" opacity="0"><animateMotion dur="5.4s" repeatCount="indefinite" begin="2.25s" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.0;0.2;1" path="M330,360 L155,268"/><animate attributeName="opacity" dur="5.4s" repeatCount="indefinite" begin="2.25s" values="0;0;1;1;0;0" keyTimes="0;0.0;0.035;0.165;0.2;1"/></circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s" path="M330,360 L330,175"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.45s" path="M330,360 L505,268"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0.45s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.9s" path="M330,360 L505,452"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="0.9s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.35s" path="M330,360 L330,545"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="1.35s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.8s" path="M330,360 L155,452"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="1.8s"/>
+                        </circle>
+                        <circle r="4">
+                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="2.25s" path="M330,360 L155,268"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite" begin="2.25s"/>
+                        </circle>
                     </g>
 
                     <circle class="hn-ring hn-wave" cx="330" cy="360" r="40" stroke-width="2"/>
@@ -487,7 +273,6 @@
                     </g>
                   </g>
 
-                   </g>
                   </g>
                  </g>
                 </g>
@@ -931,9 +716,6 @@
     var glow = svg.querySelector('.hn-glow');
     if (!net || !back || !glow) return;
 
-    // Die Arme sind ineinander verschachtelt: ein Arm haengt am goldenen Knoten,
-    // seine Unterarme an dessen blauen Knoten. Jeder dreht um seinen eigenen
-    // Ankerpunkt, die Drehungen summieren sich nach aussen auf.
     var arms = Array.prototype.map.call(svg.querySelectorAll('.hn-arm'), function (el) {
         var a = (el.getAttribute('data-a') || '0,0').split(',');
         return {
@@ -941,7 +723,7 @@
             ax: +a[0],
             ay: +a[1],
             k: parseFloat(el.getAttribute('data-k')) || 1,
-            d: parseFloat(el.getAttribute('data-d')) || 3
+            long: /(^|\s)hn-arm-long(\s|$)/.test(el.getAttribute('class') || '')
         };
     });
     if (!arms.length) return;
@@ -953,7 +735,8 @@
     var NET_X = 20,  NET_Y = 13;    // Drift des Netzes in SVG-Einheiten
     var BACK_X = -9, BACK_Y = -6;   // Gegendrift des Punktrasters
     var GLOW = 0.65;                // Lichtschein folgt dem Netz, aber traeger
-    var Y_RATIO = 0.62;             // vertikaler Anteil an der Drehung
+    var LEAF_DEG_X = 6.5, LEAF_DEG_Y = 4;   // Drehung der kurzen Arme in Grad
+    var LONG_DEG_X = 1.5, LONG_DEG_Y = 0.9; // ... der weit auslaufenden Arme
     var EASE = 0.08;                // je kleiner, desto traeger das Nachziehen
 
     var targetX = 0, targetY = 0;   // -1 .. 1
@@ -970,7 +753,9 @@
 
         for (var i = 0; i < arms.length; i++) {
             var a = arms[i];
-            var deg = (curX + curY * Y_RATIO) * a.d * a.k;
+            var dx = a.long ? LONG_DEG_X : LEAF_DEG_X;
+            var dy = a.long ? LONG_DEG_Y : LEAF_DEG_Y;
+            var deg = (curX * dx + curY * dy) * a.k;
             a.el.setAttribute('transform',
                 'rotate(' + deg.toFixed(3) + ',' + a.ax + ',' + a.ay + ')');
         }
