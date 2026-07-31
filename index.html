@@ -44,8 +44,9 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
         <!-- Die Grafik liegt inline statt als <img>, weil ein SVG im img-Tag
-             abgeschottet ist und keine Mausereignisse empfaengt. Die Maus-Parallaxe
-             sitzt unten im Script und verschiebt .hn-far und .hn-core gegenlaeufig. -->
+             abgeschottet ist und das Script keinen Zugriff auf seine Ebenen haette.
+             Die Maus-Parallaxe sitzt unten im Script, haengt am window und
+             verschiebt .hn-far und .hn-core gegenlaeufig. -->
         <div class="hero-art">
             <svg class="hero-svg" id="heroNet" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice"
                  role="img" aria-label="Illustration eines vernetzten KI-Agenten-Systems: ein zentraler Knoten steuert mehrere verbundene Agenten.">
@@ -776,16 +777,38 @@
 
     function start() { if (raf === null) raf = requestAnimationFrame(tick); }
 
-    hero.addEventListener('pointermove', function (e) {
-        if (e.pointerType !== 'mouse') return;
+    // Bezugspunkt ist die Mitte der Hero-Grafik, der Ausschlag wird auf das halbe
+    // Fenster skaliert: ueber der Bildmitte ist die Ruhelage, am Bildschirmrand
+    // der volle Anschlag. So zaehlt die Maus auf der ganzen Seite, nicht nur
+    // innerhalb der Box.
+    var lastX = null, lastY = null;
+
+    function update() {
+        if (lastX === null) return;
         var r = hero.getBoundingClientRect();
-        targetX = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width  - 0.5) * 2));
-        targetY = Math.max(-1, Math.min(1, ((e.clientY - r.top)  / r.height - 0.5) * 2));
+        var cx = r.left + r.width  / 2;
+        var cy = r.top  + r.height / 2;
+        var hw = Math.max(1, window.innerWidth  / 2);
+        var hh = Math.max(1, window.innerHeight / 2);
+        targetX = Math.max(-1, Math.min(1, (lastX - cx) / hw));
+        targetY = Math.max(-1, Math.min(1, (lastY - cy) / hh));
         start();
+    }
+
+    window.addEventListener('pointermove', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        lastX = e.clientX; lastY = e.clientY;
+        update();
     }, { passive: true });
 
-    // Zurueck in die Ruhelage, sobald die Maus den Hero verlaesst.
-    hero.addEventListener('pointerleave', function () {
+    // Beim Scrollen wandert die Grafik unter der ruhenden Maus hindurch.
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+
+    // Zurueck in die Ruhelage, sobald die Maus das Fenster verlaesst.
+    document.addEventListener('pointerleave', function (e) {
+        if (e.pointerType && e.pointerType !== 'mouse') return;
+        lastX = null; lastY = null;
         targetX = 0; targetY = 0;
         start();
     }, { passive: true });
