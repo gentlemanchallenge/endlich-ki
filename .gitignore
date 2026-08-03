@@ -3,3 +3,13 @@ Thumbs.db
 *.xcf
 node_modules/
 .claude/
+
+# Abhaengigkeiten – werden mit "composer install" erzeugt
+vendor/
+
+# Rate-Limit-Daten (nur Laufzeit, kein Repo-Inhalt)
+data/signup-ratelimit.json
+data/signup-ratelimit-daily.json
+
+# Tor-Exit-Node-Liste (Cache, wird von TorGuard.php automatisch nachgeladen)
+data/tor-exit-nodes.txt

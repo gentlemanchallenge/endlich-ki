@@ -2,8 +2,8 @@
 
 Landingpage für KI-Seminare (B2B): Online-Live-Seminar, 1 Tag, eigene KI-Agenten bauen.
 
-**Status: erster Entwurf.** Anmeldeformular ist noch nicht angebunden, Rechtstexte sind ungeprüft,
-die Seite ist per `noindex` von Suchmaschinen ausgeschlossen.
+**Status: erster Entwurf.** Rechtstexte sind ungeprüft, die Seite ist per `noindex` von
+Suchmaschinen ausgeschlossen.
 
 ## Struktur
 
@@ -13,7 +13,15 @@ die Seite ist per `noindex` von Suchmaschinen ausgeschlossen.
 | `styles.css` | Design-System (Navy/Gold, Montserrat/Cormorant Garamond/Barlow Condensed) — übernommen von werbestimme.de |
 | `impressum.html`, `datenschutz.html` | Rechtstexte, Entwurfsstand |
 | `bilder/` | Portrait für den Trainer-Abschnitt, Foto-Banner als og:image |
-| `Dockerfile`, `nginx.conf` | Statisches Hosting via nginx für Coolify |
+| `send-signup.php` | Handler fürs Anmeldeformular: Bot-Schutz (Honeypot, Rate-Limit, Tor-Guard, Gibberish-Erkennung), Admin- + Bestätigungsmail per PHPMailer/SMTP. Gleiches Muster wie `send-contact.php` bei werbestimme.de. |
+| `lib/` | Wiederverwendbare PHP-Helfer (BotGuard, TorGuard, RateLimiter, BotAlertMail) |
+| `Dockerfile`, `.htaccess` | Hosting via php:8-apache für Coolify |
+
+## SMTP-Konfiguration
+
+`send-signup.php` liest die Zugangsdaten aus Umgebungsvariablen (Coolify Environment Variables,
+nicht im Repo): `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_FROM_EMAIL`,
+`SMTP_FROM_NAME`.
 
 ## Deployment
 
@@ -23,7 +31,6 @@ Coolify baut das Dockerfile bei jedem Push auf `main` automatisch (Webhook).
 
 - Domain `endlich-ki.de` registrieren und in Coolify hinterlegen
 - Termine bestätigen (aktuell Platzhalter: 24.09. / 22.10. / 19.11.2026)
-- Anmeldeformular anbinden (Mailversand + Bestätigung)
 - Konditionen prüfen: Umbuchungsfrist, Teamrabatt, Support-Zeitraum, Aufzeichnungsdauer
 - Trainer-Text und Referenzen mit echten Angaben füllen
 - Google Fonts lokal einbinden (siehe Datenschutzerklärung, Abschnitt 3)

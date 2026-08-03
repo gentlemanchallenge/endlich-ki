@@ -1,0 +1,22 @@
+# Entwurfsstand: nicht indexieren lassen (siehe robots.txt)
+Header always set X-Robots-Tag "noindex, nofollow"
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    <FilesMatch "\.(jpg|jpeg|png|webp|avif|svg|woff2)$">
+        ExpiresDefault "access plus 7 days"
+    </FilesMatch>
+</IfModule>
+
+# CSS/JS bewusst nicht cachen: solange die Seite Entwurf ist, soll jede
+# Aenderung sofort sichtbar sein, ohne dass jemand hart neu laden muss.
+<FilesMatch "\.(css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+</FilesMatch>
+
+# lib/ und data/ und config/ sind keine HTTP-Endpunkte
+RewriteEngine On
+RewriteRule ^(lib|data|config)/ - [F,L]
