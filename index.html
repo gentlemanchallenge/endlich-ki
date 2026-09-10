@@ -280,7 +280,7 @@
         <div class="hero-overlay">
             <div class="hero-eyebrow">Für Handwerksbetriebe &middot; Individuell gebaut &middot; Sofort einsatzbereit</div>
             <h1 class="hero-title">
-                <span class="hero-title-line"><em>KI</em> <span class="hero-rotator" aria-hidden="true"><span class="hero-rotator-track">
+                <span class="hero-title-line hero-title-line-rotator"><em>KI</em> <span class="hero-rotator" aria-hidden="true"><span class="hero-rotator-track">
                     <span class="hero-rotator-item">schreibt deine Angebote.</span>
                     <span class="hero-rotator-item">notiert Zusatzarbeiten.</span>
                     <span class="hero-rotator-item">macht die Einsatzplanung.</span>
@@ -633,17 +633,17 @@
 </div>
 
 <script>
-// Mobil zeigt die Hero-Grafik einen doppelt so stark gezoomten Ausschnitt,
-// aber weiterhin zentriert um den Hub-Kern (Werkzeug-Icon bei 330,360 im
-// 1280x720-Koordinatensystem) — nicht in eine Ecke verschoben. Die halbierte
-// viewBox-Groesse (640x360 statt 1280x720) ergibt den 2x-Zoom, das Fenster
-// liegt symmetrisch um den Hub.
+// Mobil zeigt die Hero-Grafik einen doppelt so stark gezoomten Ausschnitt um
+// den Hub-Kern (Werkzeug-Icon bei 330,360 im 1280x720-Koordinatensystem).
+// Die halbierte viewBox-Groesse (640x360 statt 1280x720) ergibt den 2x-Zoom.
+// Der Hub sitzt dabei bei 25% der Fensterhoehe von oben (nicht mittig) —
+// minY = hubY - 0.25*360 = 360-90 = 270 —, damit die Grafik nach oben rutscht.
 (function () {
     var svg = document.getElementById('heroNet');
     if (!svg) return;
 
     var DESKTOP_VIEWBOX = '0 0 1280 720';
-    var MOBILE_VIEWBOX = '10 180 640 360';
+    var MOBILE_VIEWBOX = '10 270 640 360';
     var mq = window.matchMedia('(max-width: 820px)');
 
     function applyViewBox() {

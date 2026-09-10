@@ -743,8 +743,8 @@ header::before {
     .logo { font-size: 1.75rem; }
 
     /* Hero wird gestapelt: Bild oben (mit Titel darauf), Rest darunter.
-       Der Zoom/Crop der Grafik (Hub-Kern angeschnitten oben links) wird
-       per JS ueber das viewBox-Attribut umgeschaltet, nicht per CSS-
+       Der Zoom/Crop der Grafik (Hub-Kern bei 25% Fensterhoehe statt mittig)
+       wird per JS ueber das viewBox-Attribut umgeschaltet, nicht per CSS-
        Transform — siehe Script am Ende der Seite (heroNet-Block). */
     .hero { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-soft) 100%); }
     .hero-art { aspect-ratio: auto; height: 230px; }
@@ -760,25 +760,36 @@ header::before {
        dafuer aus dem Fluss genommen und exakt ueber .hero-art gelegt
        (gleiche Hoehe wie .hero-art oben, .hero ist der positionierte
        Vorfahre). flex-direction:column + justify-content:flex-end stapelt
-       die zwei .hero-title-line-Zeilen unten in der Box, der Verlauf sorgt
-       fuer Lesbarkeit vor der Hub-Grafik. */
+       die zwei Zeilen unten in der Box; align-items:flex-start verhindert,
+       dass sie auf volle Breite gestreckt werden (die Textzeilen selbst
+       tragen ihren Hintergrund, kein Verlauf mehr ueber die ganze Box). */
     .hero-title {
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 230px;
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         justify-content: flex-end;
+        gap: 0.4rem;
         margin: 0;
         padding: 1.4rem 1.3rem 1rem;
-        background: linear-gradient(180deg, rgba(15, 23, 33, 0) 0%, rgba(15, 23, 33, 0.55) 40%, rgba(15, 23, 33, 0.92) 100%);
         font-size: 1.6rem;
         z-index: 2;
     }
-    /* Jede der zwei Zeilen ("KI ..." mit Rotator, "DU machst mehr Umsatz")
-       als eigener Block, der die gesamte Breite nutzt — statt als
-       Inline-Text, der sich am Inhalt schrumpft. */
-    .hero-title-line { display: block; width: 100%; }
+    /* Jede Zeile traegt ihren eigenen engen, dunklen Hintergrund (statt
+       eines Verlaufs ueber die ganze Grafik) — sitzt also nur hinter der
+       Schrift, nicht hinter der freien Flaeche daneben/darueber. */
+    .hero-title-line {
+        display: inline-block;
+        background: rgba(15, 23, 33, 0.72);
+        padding: 0.15em 0.5em;
+        border-radius: 6px;
+    }
+    /* KI und der aktuell rotierende Satz sollen auf einer Grundlinie stehen —
+       .hero-rotator ist selbst vertical-align:top (fixe Hoehe fuer den
+       Zeilenwechsel), daher hier per Flex + align-items:baseline korrigiert. */
+    .hero-title-line-rotator { display: inline-flex; align-items: baseline; }
     .hero-title br { display: none; }
     .hero-rotator { --rotator-line: 2.4em; }
     .hero-rotator-item { white-space: normal; }
