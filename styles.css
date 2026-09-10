@@ -749,14 +749,9 @@ header::before {
     .header-nav { display: none; }
     .logo { font-size: 1.5rem; }
 
-    /* Hero wird gestapelt: Bild oben, Text darunter */
+    /* Hero-Grafik faellt auf Mobile weg, die Titelzeilen ruecken an ihre Stelle. */
     .hero { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-soft) 100%); }
-    .hero-art { aspect-ratio: auto; height: 105px; }
-    /* Der Hub liegt im viewBox bei x=330 von 1280 (nicht mittig, siehe hn-wave/
-       hn-breathe transform-origin) - bei "slice" wird auf schmalen, breiten
-       Boxen die volle Breite gezeigt, daher zoomen wir per CSS-Transform auf
-       den Hub und schieben ihn zurueck in die Mitte des sichtbaren Bereichs. */
-    .hero-svg { transform: translate(48.44%, 0) scale(2); }
+    .hero-art { display: none; }
     .hero-overlay {
         position: static;
         width: 100%;
@@ -764,7 +759,7 @@ header::before {
         background: none;
         padding: 1.8rem;
     }
-    .hero-title { font-size: clamp(0.95rem, 4.6vw, 1.7rem); }
+    .hero-title { font-size: clamp(1.36rem, 6.6vw, 2.42rem); order: -1; }
     .hero-rotator { --rotator-line: 1.25em; }
     .hero-rotator-item { white-space: nowrap; }
     .hero-sub { font-size: 0.86rem; }
