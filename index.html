@@ -95,6 +95,11 @@
                     </filter>
                 </defs>
 
+                <!-- Mobil wird diese Gruppe per CSS gezoomt und verschoben, damit der
+                     Hub-Kern angeschnitten oben links in der Box sitzt
+                     (siehe .hero-zoom-group in @media max-width:820px). -->
+                <g class="hero-zoom-group">
+
                 <!-- Grundflaeche, bleibt immer stehen -->
                 <rect width="1280" height="720" fill="url(#hn-bg)"/>
 
@@ -274,6 +279,8 @@
 
                   </g>
                  </g>
+                </g>
+
                 </g>
             </svg>
         </div>

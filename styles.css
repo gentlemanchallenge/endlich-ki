@@ -742,9 +742,17 @@ header::before {
     .header-nav { display: none; }
     .logo { font-size: 1.75rem; }
 
-    /* Hero wird gestapelt: Bild oben, Text darunter */
+    /* Hero wird gestapelt: Bild oben (mit Titel darauf), Rest darunter */
     .hero { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-soft) 100%); }
-    .hero-art { aspect-ratio: auto; height: 210px; }
+    .hero-art { aspect-ratio: auto; height: 230px; }
+
+    /* Zoomt die Grafik 2x und verschiebt sie so, dass der Hub-Kern
+       (Werkzeug-Icon) angeschnitten oben links in der Box zu sehen ist,
+       statt die ganze Grafik verkleinert zu zeigen. Die Translate-Werte
+       sind Hub-Koordinaten aus dem viewBox (330,360) mit Gegenvorzeichen —
+       siehe SVG-Kommentar "Mobil wird diese Gruppe...". */
+    .hero-zoom-group { transform: scale(2) translate(-330px, -360px); transform-origin: 0 0; }
+
     .hero-overlay {
         position: static;
         width: 100%;
@@ -752,7 +760,19 @@ header::before {
         background: none;
         padding: 1.8rem;
     }
-    .hero-title { font-size: 1.75rem; }
+    /* Der Titel liegt weiterhin auf der Grafik, nicht im gestapelten Text
+       darunter — dafuer aus dem Fluss genommen und ueber .hero-art gelegt
+       (.hero ist der naechste positionierte Vorfahre). Der Verlauf sorgt
+       fuer Lesbarkeit vor der hellen Hub-Grafik. */
+    .hero-title {
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        margin: 0;
+        padding: 1.4rem 1.3rem 1rem;
+        background: linear-gradient(180deg, rgba(15, 23, 33, 0) 0%, rgba(15, 23, 33, 0.55) 40%, rgba(15, 23, 33, 0.92) 100%);
+        font-size: 1.6rem;
+        z-index: 2;
+    }
     .hero-rotator { --rotator-line: 2.4em; }
     .hero-rotator-item { white-space: normal; }
     .hero-sub { font-size: 0.86rem; }
