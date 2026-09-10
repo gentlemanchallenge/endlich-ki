@@ -645,6 +645,39 @@ header::before {
 .sticky-cta.visible { transform: translateX(-50%) translateY(0); pointer-events: auto; }
 .sticky-cta .btn { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); padding: 0.7rem 1.6rem; font-size: 0.85rem; }
 
+/* ---------- Bestaetigungs-Modal ---------- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 35, 50, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 2000;
+}
+.modal-overlay[hidden] { display: none; }
+.modal-box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 2.6rem 2rem 2.2rem;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+}
+.modal-check {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #2e9e5b;
+    color: #fff;
+    font-size: 1.7rem;
+    line-height: 56px;
+    margin: 0 auto 1.2rem;
+}
+.modal-box h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; color: var(--primary-navy); margin-bottom: 0.6rem; }
+.modal-box p { font-size: 0.9rem; color: #666; line-height: 1.6; margin-bottom: 1.6rem; }
+
 /* ---------- Rechtstexte ---------- */
 .legal-content h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; color: var(--primary-navy); margin: 2rem 0 0.8rem; padding-top: 1rem; border-top: 1px solid #eee; }
 .legal-content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
