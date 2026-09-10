@@ -1,7 +1,8 @@
 <?php
 /**
- * Anmeldeformular-Handler für endlich-ki.de
- * Empfängt Seminar-Anmeldungen und sendet Admin- + Bestätigungsmail per SMTP.
+ * Kontaktformular-Handler für endlich-ki.de
+ * Empfängt Anfragen für die kostenlose Betriebsanalyse und sendet
+ * Admin- + Bestätigungsmail per SMTP.
  *
  * Selber Bot-Schutz-Standard wie werbestimme.de/send-contact.php: vier
  * unabhängige Prüfungen, die erste, die anschlägt, gewinnt. Wird ein Bot
@@ -154,19 +155,18 @@ if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
 
 if (($data['consent'] ?? '') !== 'on') {
     http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Bitte bestätigen Sie die Datenschutzerklärung']);
+    echo json_encode(['success' => false, 'error' => 'Bitte bestätige die Datenschutzerklärung']);
     exit;
 }
 
 // ─── Daten bereinigen ────────────────────────────────────────────────────
 
-$firma   = htmlspecialchars(trim($data['firma'] ?? ''));
-$name    = htmlspecialchars(trim($data['name']));
-$email   = htmlspecialchars(trim($data['email']));
-$telefon = htmlspecialchars(trim($data['telefon'] ?? ''));
-$anzahl  = htmlspecialchars(trim($data['anzahl'] ?? ''));
-$termin  = htmlspecialchars(trim($data['termin'] ?? ''));
-$aufgabe = htmlspecialchars(trim($data['aufgabe'] ?? ''));
+$betrieb        = htmlspecialchars(trim($data['firma'] ?? ''));
+$name           = htmlspecialchars(trim($data['name']));
+$email          = htmlspecialchars(trim($data['email']));
+$telefon        = htmlspecialchars(trim($data['telefon'] ?? ''));
+$erreichbarkeit = htmlspecialchars(trim($data['erreichbarkeit'] ?? ''));
+$aufgabe        = htmlspecialchars(trim($data['aufgabe'] ?? ''));
 
 // ─── Admin-E-Mail aufbauen ───────────────────────────────────────────────
 
@@ -180,7 +180,7 @@ function mailField(string $label, string $value): string {
             ";
 }
 
-$adminSubject = "📬 Neue Seminar-Anmeldung von $name";
+$adminSubject = "📬 Neue Anfrage: Kostenlose Betriebsanalyse von $name";
 
 $adminHtml = "
 <!DOCTYPE html>
@@ -200,11 +200,11 @@ $adminHtml = "
 <body>
     <div class='container'>
         <div class='header'>
-            <h2>Seminar-Anmeldung</h2>
+            <h2>Anfrage: Kostenlose Betriebsanalyse</h2>
             <p>endlich-ki.de</p>
         </div>
         <div class='content'>
-            " . mailField('Unternehmen', $firma) . "
+            " . mailField('Betrieb / Gewerk', $betrieb) . "
             <div class='field'>
                 <span class='label'>Name:</span>
                 <div class='value'>$name</div>
@@ -214,12 +214,11 @@ $adminHtml = "
                 <div class='value'><a href='mailto:$email'>$email</a></div>
             </div>
             " . mailField('Telefon', $telefon) . "
-            " . mailField('Teilnehmer', $anzahl) . "
-            " . mailField('Wunschtermin', $termin) . "
-            " . mailField('Aufgabe, die am meisten Zeit kostet', $aufgabe) . "
+            " . mailField('Am besten erreichbar', $erreichbarkeit) . "
+            " . mailField('Größter Zeitfresser im Büro', $aufgabe) . "
         </div>
         <div class='footer'>
-            <p>Diese Nachricht wurde über das Anmeldeformular auf endlich-ki.de gesendet.</p>
+            <p>Diese Nachricht wurde über das Kontaktformular auf endlich-ki.de gesendet.</p>
             <p>Datum: " . date('d.m.Y H:i:s') . "</p>
         </div>
     </div>
@@ -236,20 +235,20 @@ $confirmHtml = "
 <body style='font-family:Arial,sans-serif;line-height:1.6;color:#333;margin:0;padding:0;'>
 <table width='100%' cellpadding='0' cellspacing='0' style='max-width:600px;margin:0 auto;'>
 <tr><td style='background:#1a2332;color:#fff;padding:20px;text-align:center;border-radius:8px 8px 0 0;'>
-<h2 style='margin:0;'>Anmeldung erhalten</h2>
+<h2 style='margin:0;'>Anfrage erhalten</h2>
 <p style='margin:4px 0 0;'>endlich-ki.de</p>
 </td></tr>
 <tr><td style='background:#f8f9fa;padding:30px;border-radius:0 0 8px 8px;'>
 <p>Hallo $name,</p>
-<p>vielen Dank für Ihre Anmeldung zum Seminar. Wir melden uns innerhalb eines Werktags, um alles weitere zu klären.</p>
-<p>Fragen vorab? Antworten Sie einfach auf diese E-Mail.</p>
+<p>danke für deine Anfrage zur kostenlosen Betriebsanalyse. Ich melde mich innerhalb eines Werktags bei dir, um einen Termin zu finden.</p>
+<p>Fragen vorab? Antworte einfach auf diese E-Mail.</p>
 <p>Viele Grüße,<br>Jonathan Enns</p>
 </td></tr>
 </table>
 </body>
 </html>";
 
-$confirmAltBody = "Hallo $name,\n\nvielen Dank für Ihre Anmeldung zum Seminar. Wir melden uns innerhalb eines Werktags, um alles weitere zu klären.\n\nFragen vorab? Antworten Sie einfach auf diese E-Mail.\n\nViele Grüße,\nJonathan Enns";
+$confirmAltBody = "Hallo $name,\n\ndanke für deine Anfrage zur kostenlosen Betriebsanalyse. Ich melde mich innerhalb eines Werktags bei dir, um einen Termin zu finden.\n\nFragen vorab? Antworte einfach auf diese E-Mail.\n\nViele Grüße,\nJonathan Enns";
 
 // ─── E-Mails senden ──────────────────────────────────────────────────────
 
@@ -257,9 +256,9 @@ try {
     sendSignupMail($smtpCreds, $smtpCreds['from_email'], $adminSubject, $adminHtml, $data['email'], trim($data['name']));
 
     try {
-        sendSignupMail($smtpCreds, $data['email'], 'endlich-ki.de: Ihre Anmeldung ist eingegangen', $confirmHtml, null, null, $confirmAltBody);
+        sendSignupMail($smtpCreds, $data['email'], 'endlich-ki.de: Deine Anfrage ist eingegangen', $confirmHtml, null, null, $confirmAltBody);
     } catch (\Exception $e) {
-        error_log('Bestätigungsmail (Anmeldung) fehlgeschlagen: ' . $e->getMessage());
+        error_log('Bestätigungsmail (Anfrage) fehlgeschlagen: ' . $e->getMessage());
     }
 
     echo json_encode(['success' => true]);
@@ -268,7 +267,7 @@ try {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'error' => 'Beim Versenden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.'
+        'error' => 'Beim Versenden ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
     ]);
-    error_log('SMTP-Fehler (Anmeldung): ' . $e->getMessage());
+    error_log('SMTP-Fehler (Anfrage): ' . $e->getMessage());
 }

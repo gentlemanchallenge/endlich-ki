@@ -1,0 +1,746 @@
+<title>endlich-ki Markenkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,500&family=Montserrat:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+
+<style>
+  :root{
+    --k-navy-deep:#0f1721;
+    --k-navy:#1a2332;
+    --k-navy-soft:#2c3e50;
+    --k-gold:#c9a66b;
+    --k-gold-light:#d4b583;
+    --k-gold-hub:#e0c078;
+    --k-gold-pulse:#f0dcaf;
+    --k-blue-node:#7f9bc4;
+    --k-paper:#f8f9fa;
+    --k-page-bg:#eef0f2;
+    --k-card-bg:#ffffff;
+    --k-ink:#1c2530;
+    --k-ink-soft:#5b6572;
+    --k-hair:#dfe3e8;
+    --k-shadow:0 14px 40px rgba(15,23,33,0.10);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--k-page-bg);
+    color:var(--k-ink);
+    font-family:'Montserrat',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--k-gold-light);color:var(--k-navy);}
+
+  img,svg{max-width:100%;}
+  h1,h2,h3{text-wrap:balance;}
+
+  .wrap{max-width:1040px;margin:0 auto;padding:0 1.5rem;}
+
+  /* ---------- Top bar ---------- */
+  .kit-topbar{
+    padding:1.4rem 0 0;
+  }
+  .kit-eyebrow{
+    display:flex;align-items:center;gap:0.6rem;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:0.82rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--k-ink-soft);
+  }
+  .kit-eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--k-gold);flex-shrink:0;}
+
+  /* ---------- Cover ---------- */
+  .cover{
+    margin:1.2rem 0 2.4rem;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    background:
+      radial-gradient(circle at 82% 8%, rgba(201,166,107,0.16) 0%, transparent 46%),
+      radial-gradient(circle at 12% 92%, rgba(127,155,196,0.14) 0%, transparent 50%),
+      linear-gradient(150deg, var(--k-navy-deep) 0%, var(--k-navy) 46%, var(--k-navy-soft) 100%);
+    box-shadow:var(--k-shadow);
+    padding:3.4rem 3rem 3rem;
+  }
+  .cover-grid{display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;}
+  .cover-copy{max-width:30rem;}
+  .cover-kicker{
+    font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--k-gold-light);margin-bottom:1rem;
+  }
+  .cover h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:2.5rem;
+    line-height:1.18;
+    color:#fff;
+    margin-bottom:1rem;
+  }
+  .cover h1 em{font-style:italic;color:var(--k-gold-light);}
+  .cover p{
+    font-size:0.92rem;
+    color:rgba(255,255,255,0.72);
+    line-height:1.75;
+    max-width:28rem;
+  }
+  .cover-mark-block{display:flex;flex-direction:column;align-items:center;gap:0.9rem;}
+  .cover-mark-block .mark{width:108px;height:108px;}
+  .cover-caption{font-size:0.68rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;}
+
+  /* ---------- Section shell ---------- */
+  section.card{
+    background:var(--k-card-bg);
+    border-radius:18px;
+    padding:2.6rem 2.8rem;
+    margin-bottom:1.4rem;
+    box-shadow:var(--k-shadow);
+  }
+  .card-head{margin-bottom:1.9rem;max-width:42rem;}
+  .card-num{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:0.78rem;font-weight:700;letter-spacing:0.14em;
+    color:var(--k-gold);text-transform:uppercase;
+    margin-bottom:0.5rem;
+    display:block;
+  }
+  .card-head h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:1.9rem;
+    color:var(--k-navy);
+    margin-bottom:0.6rem;
+    line-height:1.25;
+  }
+  .card-head p{font-size:0.9rem;color:var(--k-ink-soft);max-width:38rem;line-height:1.75;}
+
+  /* ---------- Farbpalette ---------- */
+  .swatch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;}
+  .swatch{border-radius:12px;overflow:hidden;border:1px solid var(--k-hair);}
+  .swatch-fill{height:76px;}
+  .swatch-info{padding:0.85rem 0.95rem;}
+  .swatch-name{font-size:0.82rem;font-weight:600;color:var(--k-navy);margin-bottom:0.15rem;}
+  .swatch-role{font-size:0.72rem;color:var(--k-ink-soft);margin-bottom:0.5rem;line-height:1.5;}
+  .swatch-hex{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:0.86rem;font-weight:600;letter-spacing:0.03em;
+    color:var(--k-ink);
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- Typografie ---------- */
+  .type-spec{padding:1.5rem 0;border-top:1px solid var(--k-hair);display:grid;grid-template-columns:9rem 1fr;gap:1.6rem;align-items:start;}
+  .type-spec:first-of-type{border-top:none;padding-top:0;}
+  .type-role{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--k-ink-soft);
+    padding-top:0.3rem;
+  }
+  .type-role span{display:block;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:400;letter-spacing:0;color:#9aa2ab;margin-top:0.3rem;text-transform:none;}
+  .type-sample-display{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:2.1rem;color:var(--k-navy);line-height:1.2;}
+  .type-sample-display em{font-style:italic;color:var(--k-gold);}
+  .type-sample-condensed{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:2.4rem;letter-spacing:0.01em;color:var(--k-navy);line-height:1;}
+  .type-sample-condensed .accent{color:var(--k-gold);}
+  .type-sample-body{font-family:'Montserrat',sans-serif;font-size:0.92rem;color:#4a5560;line-height:1.8;max-width:34rem;}
+  .type-meta{margin-top:0.7rem;font-size:0.74rem;color:#9aa2ab;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.04em;}
+
+  /* ---------- Netzgrafik ---------- */
+  .art-frame{
+    border-radius:14px;overflow:hidden;
+    box-shadow:0 10px 34px rgba(15,23,33,0.18);
+    background:var(--k-navy);
+  }
+  .art-frame svg{display:block;width:100%;height:auto;}
+  .art-caption{display:flex;justify-content:space-between;gap:1rem;margin-top:0.9rem;font-size:0.76rem;color:var(--k-ink-soft);flex-wrap:wrap;}
+  .art-caption strong{color:var(--k-navy);}
+
+  /* ---------- Logo-Symbole (gemeinsame Definitionen) ---------- */
+  .mark{display:block;}
+  .ink-gold{color:var(--k-gold);}
+  .ink-navy{color:var(--k-navy);}
+  .ink-white{color:#fff;}
+
+  /* ---------- Lockups ---------- */
+  .lockup{display:inline-flex;align-items:center;gap:0.85rem;}
+  .lockup .mark{width:2.6rem;height:2.6rem;flex-shrink:0;}
+  .lockup-word{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    font-size:1.85rem;
+    letter-spacing:0.01em;
+    line-height:1;
+    text-transform:lowercase;
+    white-space:nowrap;
+  }
+  .lockup-word .wm-ki{text-transform:uppercase;}
+  .lockup-word .wm-de{opacity:0.55;}
+  .lockup--stacked{flex-direction:column;gap:0.6rem;}
+  .lockup--stacked .lockup-word{font-size:1.5rem;}
+
+  .lockup--full .wm-ki{color:var(--k-gold);}
+  .lockup--full.on-light .lockup-word{color:var(--k-navy);}
+  .lockup--full.on-dark .lockup-word{color:#fff;}
+  .lockup--mono-navy .lockup-word,
+  .lockup--mono-navy .lockup-word .wm-ki{color:var(--k-navy);}
+  .lockup--mono-navy .wm-ki{font-weight:800;}
+  .lockup--mono-white .lockup-word,
+  .lockup--mono-white .lockup-word .wm-ki{color:#fff;}
+  .lockup--mono-white .wm-ki{font-weight:800;}
+
+  /* ---------- Logo Showcase Grid ---------- */
+  .logo-showcase{display:grid;grid-template-columns:1.3fr 1fr;gap:1.2rem;margin-bottom:1.2rem;}
+  .logo-tile{
+    border-radius:14px;
+    padding:2.1rem 2rem;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;
+    text-align:center;
+    min-height:150px;
+  }
+  .logo-tile.bg-paper{background:var(--k-paper);border:1px solid var(--k-hair);}
+  .logo-tile.bg-navy{background:linear-gradient(135deg,var(--k-navy) 0%,var(--k-navy-soft) 100%);}
+  .tile-label{
+    font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    margin-top:0.9rem;
+  }
+  .bg-paper .tile-label{color:var(--k-ink-soft);}
+  .bg-navy .tile-label{color:rgba(255,255,255,0.55);}
+  .logo-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+  .icon-tile .mark{width:4.6rem;height:4.6rem;}
+  .favicon-demo{
+    width:3.4rem;height:3.4rem;border-radius:0.85rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* ---------- Untergrund-Testraster ---------- */
+  .bg-test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+  .bg-tile{
+    border-radius:14px;
+    padding:2.2rem 1.4rem;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+    min-height:170px;
+    position:relative;
+    overflow:hidden;
+  }
+  .bg-tile .lockup .mark{width:2.4rem;height:2.4rem;}
+  .bg-tile.t-paper{background:#ffffff;border:1px solid var(--k-hair);}
+  .bg-tile.t-grey{background:#e4e7eb;}
+  .bg-tile.t-navy{background:linear-gradient(135deg,var(--k-navy) 0%,var(--k-navy-soft) 100%);}
+  .bg-tile.t-gold{background:linear-gradient(135deg,var(--k-gold-light) 0%,var(--k-gold) 100%);}
+  .bg-tile.t-photo{background:radial-gradient(circle at 30% 20%,#2a3a52 0%,#111a26 55%,#0a1119 100%);}
+  .bg-tile.t-photo::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(201,166,107,0.35) 0, rgba(201,166,107,0.35) 2px, transparent 2px),
+      radial-gradient(circle at 70% 65%, rgba(127,155,196,0.3) 0, rgba(127,155,196,0.3) 2px, transparent 2px),
+      radial-gradient(circle at 85% 20%, rgba(201,166,107,0.25) 0, rgba(201,166,107,0.25) 2px, transparent 2px),
+      radial-gradient(circle at 45% 80%, rgba(127,155,196,0.25) 0, rgba(127,155,196,0.25) 2px, transparent 2px);
+    opacity:0.9;
+  }
+  .bg-tile-label{
+    font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+    position:relative;z-index:1;
+  }
+  .t-paper .bg-tile-label,.t-grey .bg-tile-label{color:var(--k-ink-soft);}
+  .t-navy .bg-tile-label,.t-photo .bg-tile-label{color:rgba(255,255,255,0.5);}
+  .t-gold .bg-tile-label{color:rgba(26,35,50,0.6);}
+  .bg-tile .lockup{position:relative;z-index:1;}
+
+  /* ---------- Code / Assets ---------- */
+  .code-block{margin-bottom:1.3rem;}
+  .code-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;}
+  .code-title{font-size:0.78rem;font-weight:600;color:var(--k-navy);}
+  .copy-btn{
+    font-family:'Montserrat',sans-serif;
+    font-size:0.7rem;font-weight:600;
+    background:var(--k-paper);
+    border:1px solid var(--k-hair);
+    color:var(--k-ink-soft);
+    padding:0.32rem 0.7rem;
+    border-radius:6px;
+    cursor:pointer;
+    transition:background 0.2s,color 0.2s;
+  }
+  .copy-btn:hover{background:var(--k-gold-light);color:var(--k-navy);border-color:var(--k-gold-light);}
+  .copy-btn:focus-visible{outline:2px solid var(--k-gold);outline-offset:2px;}
+  pre{
+    background:var(--k-navy-deep);
+    color:#dbe2ea;
+    padding:1rem 1.1rem;
+    border-radius:10px;
+    font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+    font-size:0.76rem;
+    line-height:1.65;
+    overflow-x:auto;
+    max-height:280px;
+    overflow-y:auto;
+  }
+  pre .tok-tag{color:#e0c078;}
+  pre .tok-str{color:#9fd3a3;}
+  pre .tok-com{color:#6b7686;font-style:italic;}
+
+  footer.kit-footer{
+    text-align:center;
+    padding:1.6rem 0 2.6rem;
+    font-size:0.76rem;
+    color:#9aa2ab;
+  }
+
+  @media (max-width:820px){
+    .cover{padding:2.4rem 1.6rem;}
+    .cover-grid{flex-direction:column;align-items:flex-start;}
+    section.card{padding:1.9rem 1.6rem;}
+    .swatch-grid{grid-template-columns:repeat(2,1fr);}
+    .type-spec{grid-template-columns:1fr;gap:0.5rem;}
+    .logo-showcase{grid-template-columns:1fr;}
+    .bg-test-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){
+    .swatch-grid{grid-template-columns:1fr 1fr;}
+    .bg-test-grid{grid-template-columns:1fr;}
+    .cover h1{font-size:2rem;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .hn-wave,.hn-breathe,.hn-twinkle{animation:none!important;}
+  }
+</style>
+
+<!-- Gemeinsame SVG-Definitionen: einmal deklariert, per <use> ueberall im Dokument referenziert -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="kitHubGradient" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#f0dcaf"/>
+      <stop offset="45%" stop-color="#d4b583"/>
+      <stop offset="100%" stop-color="#b08d4f"/>
+    </radialGradient>
+  </defs>
+  <symbol id="mark-frame" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+      <path d="M50,50 L50,18"/>
+      <path d="M50,50 L77.71,34"/>
+      <path d="M50,50 L77.71,66"/>
+      <path d="M50,50 L50,82"/>
+      <path d="M50,50 L22.29,66"/>
+      <path d="M50,50 L22.29,34"/>
+    </g>
+    <path d="M50,18 L77.71,34 L77.71,66 L50,82 L22.29,66 L22.29,34 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-dasharray="1 6" stroke-linecap="round" opacity="0.55"/>
+    <g fill="currentColor">
+      <circle cx="50" cy="18" r="5.6"/>
+      <circle cx="77.71" cy="34" r="5.6"/>
+      <circle cx="77.71" cy="66" r="5.6"/>
+      <circle cx="50" cy="82" r="5.6"/>
+      <circle cx="22.29" cy="66" r="5.6"/>
+      <circle cx="22.29" cy="34" r="5.6"/>
+    </g>
+  </symbol>
+  <symbol id="mark-hub-gold" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="16.5" fill="url(#kitHubGradient)"/>
+    <circle cx="50" cy="50" r="16.5" fill="none" stroke="#f7ead0" stroke-width="1" opacity="0.6"/>
+  </symbol>
+  <symbol id="mark-hub-flat" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="16.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="mark-spark-navy" viewBox="0 0 100 100">
+    <path d="M50,43 L43,56 L57,56 Z" fill="none" stroke="#1a2332" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#1a2332"><circle cx="50" cy="43" r="2.3"/><circle cx="43" cy="56" r="2.3"/><circle cx="57" cy="56" r="2.3"/></g>
+  </symbol>
+  <symbol id="mark-spark-white" viewBox="0 0 100 100">
+    <path d="M50,43 L43,56 L57,56 Z" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#ffffff"><circle cx="50" cy="43" r="2.3"/><circle cx="43" cy="56" r="2.3"/><circle cx="57" cy="56" r="2.3"/></g>
+  </symbol>
+</svg>
+
+<div class="wrap kit-topbar">
+  <div class="kit-eyebrow">Markenkit &middot; endlich-ki.de</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ COVER ============ -->
+  <div class="cover">
+    <div class="cover-grid">
+      <div class="cover-copy">
+        <div class="cover-kicker">Farben &middot; Schrift &middot; Grafik &middot; Logo</div>
+        <h1>Ein Zeichen für den <em>Knotenpunkt</em>,<br>an dem aus Werkzeug<br>ein Mitarbeiter wird.</h1>
+        <p>Diese Seite fasst das bestehende visuelle System von endlich-ki.de zusammen und ergänzt es um ein neues Logo. Alles hier stammt aus dem echten Quellcode der Seite oder baut direkt darauf auf — bereit zur Wiederverwendung in anderen Projekten.</p>
+      </div>
+      <div class="cover-mark-block">
+        <svg class="mark" viewBox="0 0 100 100">
+          <use href="#mark-frame" class="ink-gold"/>
+          <use href="#mark-hub-gold"/>
+          <use href="#mark-spark-navy"/>
+        </svg>
+        <div class="cover-caption">Primäre Bildmarke</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FARBPALETTE ============ -->
+  <section class="card" id="farben">
+    <div class="card-head">
+      <span class="card-num">01 — Farbpalette</span>
+      <h2>Navy trägt, Gold markiert.</h2>
+      <p>Sieben Farbwerte aus <code>styles.css</code>. Navy ist die Grundfläche für Header, Karten mit Betonung und Footer; Gold ist ausschließlich für Akzente, Kennzahlen und interaktive Elemente reserviert — nie für Flächen.</p>
+    </div>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#0f1721;"></div>
+        <div class="swatch-info"><div class="swatch-name">Navy Deep</div><div class="swatch-role">Verlauf-Startpunkt, Grafikhintergrund</div><div class="swatch-hex">#0F1721</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#1a2332;"></div>
+        <div class="swatch-info"><div class="swatch-name">Navy</div><div class="swatch-role">Primärfarbe — Header, Footer, CTA-Flächen</div><div class="swatch-hex">#1A2332</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#2c3e50;"></div>
+        <div class="swatch-info"><div class="swatch-name">Navy Soft</div><div class="swatch-role">Verlauf-Endpunkt, Fließtext-Dunkel</div><div class="swatch-hex">#2C3E50</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#c9a66b;"></div>
+        <div class="swatch-info"><div class="swatch-name">Gold</div><div class="swatch-role">Hauptakzent — Buttons, Links, Kennzahlen</div><div class="swatch-hex">#C9A66B</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#d4b583;"></div>
+        <div class="swatch-info"><div class="swatch-name">Gold Light</div><div class="swatch-role">Hover-Zustand, Verlauf-Highlight</div><div class="swatch-hex">#D4B583</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#e0c078;"></div>
+        <div class="swatch-info"><div class="swatch-name">Gold Hub</div><div class="swatch-role">Leuchtpunkt der Netzgrafik, Logo-Kern</div><div class="swatch-hex">#E0C078</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#7f9bc4;"></div>
+        <div class="swatch-info"><div class="swatch-name">Blau-Knoten</div><div class="swatch-role">Sekundärakzent — ferne Netzwerk-Knoten</div><div class="swatch-hex">#7F9BC4</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#f8f9fa;border-bottom:1px solid var(--k-hair);"></div>
+        <div class="swatch-info"><div class="swatch-name">Papier</div><div class="swatch-role">Seitenhintergrund, helle Flächen</div><div class="swatch-hex">#F8F9FA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPOGRAFIE ============ -->
+  <section class="card" id="typografie">
+    <div class="card-head">
+      <span class="card-num">02 — Typografie</span>
+      <h2>Drei Schriften, drei Aufgaben.</h2>
+      <p>Jede Schrift hat genau eine Rolle und wird nicht zweckentfremdet — das hält den Auftritt trotz drei Familien ruhig.</p>
+    </div>
+
+    <div class="type-spec">
+      <div class="type-role">Überschrift<span>Cormorant Garamond, 600</span></div>
+      <div>
+        <div class="type-sample-display">Sie haben KI. Sie haben nur noch <em>nichts davon.</em></div>
+        <div class="type-meta">Section-Titel, Hero-Headline, Preis-Label — immer in Navy, Akzentwort in Gold-Kursiv.</div>
+      </div>
+    </div>
+
+    <div class="type-spec">
+      <div class="type-role">Zahlen &amp; Logo<span>Barlow Condensed, 700</span></div>
+      <div>
+        <div class="type-sample-condensed">73<span class="accent">%</span> &nbsp; endlich-<span class="accent">KI</span></div>
+        <div class="type-meta">Statistik-Ziffern, Agenda-Uhrzeiten, Wortmarke — schmal und laut, für Zahlen und den Markennamen reserviert.</div>
+      </div>
+    </div>
+
+    <div class="type-spec">
+      <div class="type-role">Fließtext &amp; UI<span>Montserrat, 400–600</span></div>
+      <div>
+        <p class="type-sample-body">Kein Prompt-Workshop, keine Tool-Parade. Am Ende des Tages läuft bei jedem Teilnehmer ein Agent, der eine echte, wiederkehrende Aufgabe übernimmt.</p>
+        <div class="type-meta">Absätze, Navigation, Formulare, Buttons.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NETZGRAFIK ============ -->
+  <section class="card" id="grafik">
+    <div class="card-head">
+      <span class="card-num">03 — Markengrafik</span>
+      <h2>Die Netzgrafik ist das visuelle Herzstück.</h2>
+      <p>Ein zentraler Knoten steuert sechs verbundene Agenten — das trägt die Kernaussage der Seite und funktioniert als Hero-Bild, Ladeanimation oder dezenter Hintergrund in jedem dunklen Layout.</p>
+    </div>
+    <div class="art-frame">
+      <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration eines vernetzten KI-Agenten-Systems: ein zentraler Knoten steuert mehrere verbundene Agenten.">
+        <defs>
+          <linearGradient id="hn-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0f1721"/><stop offset="50%" stop-color="#1a2332"/><stop offset="100%" stop-color="#243450"/>
+          </linearGradient>
+          <radialGradient id="hn-glow-gold" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#e0c078" stop-opacity="0.62"/><stop offset="28%" stop-color="#c9a66b" stop-opacity="0.26"/>
+            <stop offset="60%" stop-color="#c9a66b" stop-opacity="0.09"/><stop offset="100%" stop-color="#c9a66b" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="hn-glow-cool" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#6f95d6" stop-opacity="0.22"/><stop offset="100%" stop-color="#6f95d6" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="hn-hub" cx="0.35" cy="0.3" r="0.8">
+            <stop offset="0%" stop-color="#f0dcaf"/><stop offset="45%" stop-color="#d4b583"/><stop offset="100%" stop-color="#b08d4f"/>
+          </radialGradient>
+          <pattern id="hn-dots" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#c9a66b" opacity="0.16"/></pattern>
+          <linearGradient id="hn-fade-right" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/><stop offset="42%" stop-color="#ffffff" stop-opacity="1"/>
+            <stop offset="68%" stop-color="#ffffff" stop-opacity="0.42"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+          </linearGradient>
+          <mask id="hn-mask-fade"><rect x="-60" y="-60" width="1400" height="840" fill="url(#hn-fade-right)"/></mask>
+          <linearGradient id="hn-fade-grid" x1="0" y1="0" x2="0.9" y2="0.8">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+          <mask id="hn-mask-grid"><rect x="-60" y="-60" width="1400" height="840" fill="url(#hn-fade-grid)"/></mask>
+          <filter id="hn-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+        </defs>
+
+        <rect width="1280" height="720" fill="url(#hn-bg)"/>
+        <g><rect x="-40" y="-40" width="1360" height="800" fill="url(#hn-dots)" mask="url(#hn-mask-grid)"/></g>
+        <g><ellipse cx="330" cy="360" rx="520" ry="470" fill="url(#hn-glow-gold)"/><ellipse cx="760" cy="610" rx="460" ry="330" fill="url(#hn-glow-cool)"/></g>
+
+        <g mask="url(#hn-mask-fade)">
+         <g transform="translate(330,360) scale(1.16) translate(-330,-360)">
+
+          <g stroke="#7f9bc4" stroke-width="1.1" opacity="0.5" fill="none"><path d="M505,268 L790,150 L1010,196"/><path d="M505,268 L742,330 L1046,300"/></g>
+          <g fill="#7f9bc4" opacity="0.5"><circle cx="790" cy="150" r="4"/><circle cx="1010" cy="196" r="3"/><circle cx="742" cy="330" r="4"/><circle cx="1046" cy="300" r="3"/></g>
+
+          <g stroke="#7f9bc4" stroke-width="1.1" opacity="0.5" fill="none"><path d="M505,452 L800,470 L1030,430"/><path d="M505,452 L770,580 L1000,556"/></g>
+          <g fill="#7f9bc4" opacity="0.5"><circle cx="800" cy="470" r="4"/><circle cx="1030" cy="430" r="3"/><circle cx="770" cy="580" r="4"/><circle cx="1000" cy="556" r="3"/></g>
+
+          <g stroke="#7f9bc4" stroke-width="1.1" opacity="0.5" fill="none"><path d="M330,545 L560,650 L880,676"/></g>
+          <g fill="#7f9bc4" opacity="0.5"><circle cx="560" cy="650" r="4"/><circle cx="880" cy="676" r="3"/></g>
+
+          <g stroke="#7f9bc4" stroke-width="1.2" opacity="0.6" fill="none"><path d="M330,175 L250,78"/><path d="M330,175 L412,84"/></g>
+          <g fill="#7f9bc4" opacity="0.85"><circle cx="250" cy="78" r="6" class="hn-twinkle"/><circle cx="412" cy="84" r="5" class="hn-twinkle"/></g>
+
+          <g stroke="#7f9bc4" stroke-width="1.2" opacity="0.6" fill="none"><path d="M505,268 L636,188"/><path d="M505,268 L660,300"/></g>
+          <g fill="#7f9bc4" opacity="0.85"><circle cx="636" cy="188" r="6" class="hn-twinkle"/><circle cx="660" cy="300" r="5" class="hn-twinkle"/></g>
+
+          <g stroke="#7f9bc4" stroke-width="1.2" opacity="0.6" fill="none"><path d="M505,452 L660,420"/><path d="M505,452 L636,532"/></g>
+          <g fill="#7f9bc4" opacity="0.85"><circle cx="660" cy="420" r="5" class="hn-twinkle"/><circle cx="636" cy="532" r="6" class="hn-twinkle"/></g>
+
+          <g stroke="#7f9bc4" stroke-width="1.2" opacity="0.6" fill="none"><path d="M330,545 L250,642"/><path d="M330,545 L412,636"/></g>
+          <g fill="#7f9bc4" opacity="0.85"><circle cx="250" cy="642" r="6" class="hn-twinkle"/><circle cx="412" cy="636" r="5" class="hn-twinkle"/></g>
+
+          <g stroke="#7f9bc4" stroke-width="1.2" opacity="0.6" fill="none"><path d="M155,452 L58,540"/><path d="M155,452 L36,420"/></g>
+          <g fill="#7f9bc4" opacity="0.85"><circle cx="58" cy="540" r="5" class="hn-twinkle"/><circle cx="36" cy="420" r="6" class="hn-twinkle"/></g>
+
+          <g stroke="#7f9bc4" stroke-width="1.2" opacity="0.6" fill="none"><path d="M155,268 L36,300"/><path d="M155,268 L58,180"/></g>
+          <g fill="#7f9bc4" opacity="0.85"><circle cx="36" cy="300" r="5" class="hn-twinkle"/><circle cx="58" cy="180" r="6" class="hn-twinkle"/></g>
+
+          <g>
+            <g stroke="#c9a66b" stroke-width="1" opacity="0.3" stroke-dasharray="5 9" fill="none"><path d="M330,175 L505,268 L505,452 L330,545 L155,452 L155,268 Z"/></g>
+            <g stroke="#c9a66b" stroke-width="2" opacity="0.62" fill="none">
+              <path d="M330,360 L330,175"/><path d="M330,360 L505,268"/><path d="M330,360 L505,452"/>
+              <path d="M330,360 L330,545"/><path d="M330,360 L155,452"/><path d="M330,360 L155,268"/>
+            </g>
+            <g fill="#d4b583">
+              <circle cx="330" cy="175" r="16"/><circle cx="505" cy="268" r="16"/><circle cx="505" cy="452" r="16"/>
+              <circle cx="330" cy="545" r="16"/><circle cx="155" cy="452" r="16"/><circle cx="155" cy="268" r="16"/>
+            </g>
+            <g fill="none" stroke="#c9a66b" stroke-width="1.4" opacity="0.5">
+              <circle cx="330" cy="175" r="25"/><circle cx="505" cy="268" r="25"/><circle cx="505" cy="452" r="25"/>
+              <circle cx="330" cy="545" r="25"/><circle cx="155" cy="452" r="25"/><circle cx="155" cy="268" r="25"/>
+            </g>
+
+            <circle cx="330" cy="360" r="40" fill="none" stroke="#c9a66b" stroke-width="2" class="hn-wave"/>
+            <circle cx="330" cy="360" r="40" fill="none" stroke="#c9a66b" stroke-width="2" class="hn-wave hn-w2"/>
+            <circle cx="330" cy="360" r="40" fill="none" stroke="#c9a66b" stroke-width="2" class="hn-wave hn-w3"/>
+
+            <g class="hn-breathe">
+              <circle cx="330" cy="360" r="52" fill="#c9a66b" opacity="0.28" filter="url(#hn-soft)"/>
+              <circle cx="330" cy="360" r="40" fill="none" stroke="#c9a66b" stroke-width="1.2" opacity="0.65"/>
+              <circle cx="330" cy="360" r="30" fill="url(#hn-hub)"/>
+              <circle cx="330" cy="360" r="30" fill="none" stroke="#f7ead0" stroke-width="1" opacity="0.55"/>
+              <g stroke="#1a2332" stroke-width="2.4" stroke-linecap="round" fill="none">
+                <path d="M330,349 L320,368"/><path d="M330,349 L340,368"/><path d="M320,368 L340,368"/>
+              </g>
+              <circle cx="330" cy="348" r="4.2" fill="#1a2332"/><circle cx="319" cy="369" r="3.4" fill="#1a2332"/><circle cx="341" cy="369" r="3.4" fill="#1a2332"/>
+            </g>
+          </g>
+         </g>
+        </g>
+      </svg>
+    </div>
+    <div class="art-caption">
+      <span><strong>Herkunft:</strong> Hero-Sektion, index.html</span>
+      <span>Animation rein per CSS-Keyframes, respektiert <code>prefers-reduced-motion</code></span>
+    </div>
+  </section>
+
+  <!-- ============ LOGO ============ -->
+  <section class="card" id="logo">
+    <div class="card-head">
+      <span class="card-num">04 — Neues Logo</span>
+      <h2>Aus der Netzgrafik verdichtet.</h2>
+      <p>endlich-ki.de hatte bisher nur eine Wort-Bildmarke ohne Icon. Das neue Zeichen zieht die sechseckige Knoten-Struktur und den kleinen Funken aus dem Favicon zu einer eigenständigen Bildmarke zusammen — kombinierbar mit der bestehenden Wortmarke.</p>
+    </div>
+
+    <div class="logo-showcase">
+      <div class="logo-tile bg-navy">
+        <div class="lockup lockup--full on-dark">
+          <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-gold"/><use href="#mark-hub-gold"/><use href="#mark-spark-navy"/></svg>
+          <div class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></div>
+        </div>
+        <div class="tile-label">Primär &middot; horizontal</div>
+      </div>
+      <div class="logo-tile bg-paper">
+        <div class="lockup lockup--full lockup--stacked on-light">
+          <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-gold"/><use href="#mark-hub-gold"/><use href="#mark-spark-navy"/></svg>
+          <div class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></div>
+        </div>
+        <div class="tile-label">Gestapelt &middot; quadratisch</div>
+      </div>
+    </div>
+
+    <div class="logo-row">
+      <div class="logo-tile bg-paper icon-tile">
+        <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-gold"/><use href="#mark-hub-gold"/><use href="#mark-spark-navy"/></svg>
+        <div class="tile-label">Bildmarke allein &middot; ab 40&nbsp;px</div>
+      </div>
+      <div class="logo-tile bg-navy icon-tile">
+        <div class="favicon-demo" style="background:#1a2332;">
+          <svg viewBox="0 0 64 64" width="34" height="34">
+            <g stroke="#c9a66b" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.75">
+              <path d="M32 22 L20 40"/><path d="M32 22 L44 40"/><path d="M20 40 L44 40"/>
+            </g>
+            <circle cx="32" cy="20" r="6" fill="#e0c078"/><circle cx="20" cy="42" r="5" fill="#c9a66b"/><circle cx="44" cy="42" r="5" fill="#c9a66b"/>
+          </svg>
+        </div>
+        <div class="tile-label">Kompaktsymbol &middot; Favicon / App-Icon, 16–48&nbsp;px</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANWENDUNG ============ -->
+  <section class="card" id="anwendung">
+    <div class="card-head">
+      <span class="card-num">05 — Anwendung auf Untergründen</span>
+      <h2>Drei Farbversionen für jede Fläche.</h2>
+      <p>Vollfarbig auf hellen und dunklen Marken-Flächen, einfarbig Navy auf Gold, einfarbig Weiß auf Fotos oder unruhigem Hintergrund.</p>
+    </div>
+    <div class="bg-test-grid">
+      <div class="bg-tile t-paper">
+        <div class="lockup lockup--full on-light">
+          <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-gold"/><use href="#mark-hub-gold"/><use href="#mark-spark-navy"/></svg>
+          <div class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></div>
+        </div>
+        <div class="bg-tile-label">Papier — Vollfarbig</div>
+      </div>
+      <div class="bg-tile t-grey">
+        <div class="lockup lockup--full on-light">
+          <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-gold"/><use href="#mark-hub-gold"/><use href="#mark-spark-navy"/></svg>
+          <div class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></div>
+        </div>
+        <div class="bg-tile-label">Hellgrau — Vollfarbig</div>
+      </div>
+      <div class="bg-tile t-navy">
+        <div class="lockup lockup--full on-dark">
+          <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-gold"/><use href="#mark-hub-gold"/><use href="#mark-spark-navy"/></svg>
+          <div class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></div>
+        </div>
+        <div class="bg-tile-label">Navy — Vollfarbig</div>
+      </div>
+      <div class="bg-tile t-gold">
+        <div class="lockup lockup--mono-navy">
+          <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-navy"/><use href="#mark-hub-flat" class="ink-navy"/><use href="#mark-spark-white"/></svg>
+          <div class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></div>
+        </div>
+        <div class="bg-tile-label">Gold — Einfarbig Navy</div>
+      </div>
+      <div class="bg-tile t-photo">
+        <div class="lockup lockup--mono-white">
+          <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-white"/><use href="#mark-hub-flat" class="ink-white"/><use href="#mark-spark-navy"/></svg>
+          <div class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></div>
+        </div>
+        <div class="bg-tile-label">Foto / unruhig — Einfarbig Weiß</div>
+      </div>
+      <div class="bg-tile t-paper">
+        <div class="lockup lockup--mono-navy">
+          <svg class="mark" viewBox="0 0 100 100"><use href="#mark-frame" class="ink-navy"/><use href="#mark-hub-flat" class="ink-navy"/><use href="#mark-spark-white"/></svg>
+          <div class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></div>
+        </div>
+        <div class="bg-tile-label">Ein-Tinte-Druck / Prägung</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ASSETS ============ -->
+  <section class="card" id="assets">
+    <div class="card-head">
+      <span class="card-num">06 — Assets zum Mitnehmen</span>
+      <h2>Zum Kopieren in andere Projekte.</h2>
+      <p>Fertige Codeblöcke für Farb-Variablen, den Google-Fonts-Link und die neue Bildmarke als eigenständiges SVG.</p>
+    </div>
+
+    <div class="code-block">
+      <div class="code-head"><span class="code-title">Farb-Variablen (CSS)</span><button class="copy-btn" data-copy-target="code-colors">Kopieren</button></div>
+      <pre id="code-colors"><span class="tok-tag">:root</span> {
+  <span class="tok-com">/* Grundflächen */</span>
+  --primary-navy: <span class="tok-str">#1a2332</span>;
+  --navy-soft: <span class="tok-str">#2c3e50</span>;
+  --navy-deep: <span class="tok-str">#0f1721</span>;
+
+  <span class="tok-com">/* Akzent */</span>
+  --accent-gold: <span class="tok-str">#c9a66b</span>;
+  --accent-gold-light: <span class="tok-str">#d4b583</span>;
+  --accent-gold-hub: <span class="tok-str">#e0c078</span>;
+  --accent-blue-node: <span class="tok-str">#7f9bc4</span>;
+
+  <span class="tok-com">/* Neutral */</span>
+  --bg-light: <span class="tok-str">#f8f9fa</span>;
+  --text-dark: <span class="tok-str">#2c3e50</span>;
+}</pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-head"><span class="code-title">Google Fonts</span><button class="copy-btn" data-copy-target="code-fonts">Kopieren</button></div>
+      <pre id="code-fonts">&lt;<span class="tok-tag">link</span> rel=<span class="tok-str">"preconnect"</span> href=<span class="tok-str">"https://fonts.googleapis.com"</span>&gt;
+&lt;<span class="tok-tag">link</span> rel=<span class="tok-str">"preconnect"</span> href=<span class="tok-str">"https://fonts.gstatic.com"</span> crossorigin&gt;
+&lt;<span class="tok-tag">link</span> rel=<span class="tok-str">"stylesheet"</span> href=<span class="tok-str">"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap"</span>&gt;</pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-head"><span class="code-title">Bildmarke — Vollfarbe (SVG)</span><button class="copy-btn" data-copy-target="code-mark">Kopieren</button></div>
+      <pre id="code-mark">&lt;<span class="tok-tag">svg</span> viewBox=<span class="tok-str">"0 0 100 100"</span> xmlns=<span class="tok-str">"http://www.w3.org/2000/svg"</span>&gt;
+  &lt;<span class="tok-tag">defs</span>&gt;
+    &lt;<span class="tok-tag">radialGradient</span> id=<span class="tok-str">"hub"</span> cx=<span class="tok-str">"0.35"</span> cy=<span class="tok-str">"0.3"</span> r=<span class="tok-str">"0.8"</span>&gt;
+      &lt;<span class="tok-tag">stop</span> offset=<span class="tok-str">"0%"</span> stop-color=<span class="tok-str">"#f0dcaf"</span>/&gt;
+      &lt;<span class="tok-tag">stop</span> offset=<span class="tok-str">"45%"</span> stop-color=<span class="tok-str">"#d4b583"</span>/&gt;
+      &lt;<span class="tok-tag">stop</span> offset=<span class="tok-str">"100%"</span> stop-color=<span class="tok-str">"#b08d4f"</span>/&gt;
+    &lt;/<span class="tok-tag">radialGradient</span>&gt;
+  &lt;/<span class="tok-tag">defs</span>&gt;
+  &lt;<span class="tok-tag">g</span> fill=<span class="tok-str">"none"</span> stroke=<span class="tok-str">"#c9a66b"</span> stroke-width=<span class="tok-str">"2.4"</span> stroke-linecap=<span class="tok-str">"round"</span>&gt;
+    &lt;<span class="tok-tag">path</span> d=<span class="tok-str">"M50,50 L50,18"</span>/&gt;&lt;<span class="tok-tag">path</span> d=<span class="tok-str">"M50,50 L77.71,34"</span>/&gt;
+    &lt;<span class="tok-tag">path</span> d=<span class="tok-str">"M50,50 L77.71,66"</span>/&gt;&lt;<span class="tok-tag">path</span> d=<span class="tok-str">"M50,50 L50,82"</span>/&gt;
+    &lt;<span class="tok-tag">path</span> d=<span class="tok-str">"M50,50 L22.29,66"</span>/&gt;&lt;<span class="tok-tag">path</span> d=<span class="tok-str">"M50,50 L22.29,34"</span>/&gt;
+  &lt;/<span class="tok-tag">g</span>&gt;
+  &lt;<span class="tok-tag">g</span> fill=<span class="tok-str">"#c9a66b"</span>&gt;
+    &lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"50"</span> cy=<span class="tok-str">"18"</span> r=<span class="tok-str">"5.6"</span>/&gt;&lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"77.71"</span> cy=<span class="tok-str">"34"</span> r=<span class="tok-str">"5.6"</span>/&gt;
+    &lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"77.71"</span> cy=<span class="tok-str">"66"</span> r=<span class="tok-str">"5.6"</span>/&gt;&lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"50"</span> cy=<span class="tok-str">"82"</span> r=<span class="tok-str">"5.6"</span>/&gt;
+    &lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"22.29"</span> cy=<span class="tok-str">"66"</span> r=<span class="tok-str">"5.6"</span>/&gt;&lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"22.29"</span> cy=<span class="tok-str">"34"</span> r=<span class="tok-str">"5.6"</span>/&gt;
+  &lt;/<span class="tok-tag">g</span>&gt;
+  &lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"50"</span> cy=<span class="tok-str">"50"</span> r=<span class="tok-str">"16.5"</span> fill=<span class="tok-str">"url(#hub)"</span>/&gt;
+  &lt;<span class="tok-tag">path</span> d=<span class="tok-str">"M50,43 L43,56 L57,56 Z"</span> fill=<span class="tok-str">"none"</span> stroke=<span class="tok-str">"#1a2332"</span> stroke-width=<span class="tok-str">"2.6"</span> stroke-linecap=<span class="tok-str">"round"</span> stroke-linejoin=<span class="tok-str">"round"</span>/&gt;
+  &lt;<span class="tok-tag">g</span> fill=<span class="tok-str">"#1a2332"</span>&gt;&lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"50"</span> cy=<span class="tok-str">"43"</span> r=<span class="tok-str">"2.3"</span>/&gt;&lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"43"</span> cy=<span class="tok-str">"56"</span> r=<span class="tok-str">"2.3"</span>/&gt;&lt;<span class="tok-tag">circle</span> cx=<span class="tok-str">"57"</span> cy=<span class="tok-str">"56"</span> r=<span class="tok-str">"2.3"</span>/&gt;&lt;/<span class="tok-tag">g</span>&gt;
+&lt;/<span class="tok-tag">svg</span>&gt;</pre>
+    </div>
+  </section>
+
+  <footer class="kit-footer">
+    Zusammengestellt aus dem bestehenden Design-System von endlich-ki.de &middot; Stand 2026
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.getAttribute('data-copy-target'));
+      if (!target) return;
+      var text = target.innerText;
+      var done = function () {
+        var original = btn.textContent;
+        btn.textContent = 'Kopiert ✓';
+        setTimeout(function () { btn.textContent = original; }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {});
+      }
+    });
+  });
+</script>
