@@ -280,7 +280,7 @@
         <div class="hero-overlay">
             <div class="hero-eyebrow">Für Handwerksbetriebe &middot; Individuell gebaut &middot; Sofort einsatzbereit</div>
             <h1 class="hero-title">
-                <em>KI</em> <span class="hero-rotator" aria-hidden="true"><span class="hero-rotator-track">
+                <span class="hero-title-line"><em>KI</em> <span class="hero-rotator" aria-hidden="true"><span class="hero-rotator-track">
                     <span class="hero-rotator-item">schreibt deine Angebote.</span>
                     <span class="hero-rotator-item">notiert Zusatzarbeiten.</span>
                     <span class="hero-rotator-item">macht die Einsatzplanung.</span>
@@ -288,9 +288,9 @@
                     <span class="hero-rotator-item">berechnet Materialbedarf.</span>
                     <span class="hero-rotator-item">macht was du willst.</span>
                     <span class="hero-rotator-item">schreibt deine Angebote.</span>
-                </span></span>
+                </span></span></span>
                 <span class="sr-only">KI schreibt deine Angebote, notiert Zusatzarbeiten, macht die Einsatzplanung, analysiert Skizzen, berechnet Materialbedarf und macht was du willst.</span>
-                <br><em>DU</em> machst mehr Umsatz.
+                <br><span class="hero-title-line"><em>DU</em> machst mehr Umsatz.</span>
             </h1>
             <p class="hero-sub">Ich baue dir KI-Agenten, die Angebote schreiben, Nachträge sichern und dein Büro am Laufen halten – fertig eingerichtet, für genau deinen Betrieb.</p>
             <div class="hero-actions">
@@ -633,18 +633,17 @@
 </div>
 
 <script>
-// Mobil zeigt die Hero-Grafik nur einen Ausschnitt: Der Hub-Kern (Werkzeug-
-// Icon) soll angeschnitten oben links sitzen und doppelt so gross wirken.
-// Dafuer wird das viewBox-Attribut umgeschaltet (Hub liegt bei 330,360 im
-// 1280x720-Koordinatensystem; die halbierte viewBox-Groesse ergibt den 2x-
-// Zoom). preserveAspectRatio bleibt xMidYMid slice, dadurch landet der Hub
-// nach dem Slice-Crop nahe der oberen linken Ecke der Box.
+// Mobil zeigt die Hero-Grafik einen doppelt so stark gezoomten Ausschnitt,
+// aber weiterhin zentriert um den Hub-Kern (Werkzeug-Icon bei 330,360 im
+// 1280x720-Koordinatensystem) — nicht in eine Ecke verschoben. Die halbierte
+// viewBox-Groesse (640x360 statt 1280x720) ergibt den 2x-Zoom, das Fenster
+// liegt symmetrisch um den Hub.
 (function () {
     var svg = document.getElementById('heroNet');
     if (!svg) return;
 
     var DESKTOP_VIEWBOX = '0 0 1280 720';
-    var MOBILE_VIEWBOX = '330 360 640 360';
+    var MOBILE_VIEWBOX = '10 180 640 360';
     var mq = window.matchMedia('(max-width: 820px)');
 
     function applyViewBox() {

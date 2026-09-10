@@ -759,21 +759,27 @@ header::before {
     /* Der Titel liegt auf der Grafik, nicht im gestapelten Text darunter —
        dafuer aus dem Fluss genommen und exakt ueber .hero-art gelegt
        (gleiche Hoehe wie .hero-art oben, .hero ist der positionierte
-       Vorfahre). flex + align-items:flex-end schiebt den Textblock an
-       den unteren Rand der Box, der Verlauf sorgt fuer Lesbarkeit vor
-       der hellen Hub-Grafik. */
+       Vorfahre). flex-direction:column + justify-content:flex-end stapelt
+       die zwei .hero-title-line-Zeilen unten in der Box, der Verlauf sorgt
+       fuer Lesbarkeit vor der Hub-Grafik. */
     .hero-title {
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 230px;
         display: flex;
-        align-items: flex-end;
+        flex-direction: column;
+        justify-content: flex-end;
         margin: 0;
         padding: 1.4rem 1.3rem 1rem;
         background: linear-gradient(180deg, rgba(15, 23, 33, 0) 0%, rgba(15, 23, 33, 0.55) 40%, rgba(15, 23, 33, 0.92) 100%);
         font-size: 1.6rem;
         z-index: 2;
     }
+    /* Jede der zwei Zeilen ("KI ..." mit Rotator, "DU machst mehr Umsatz")
+       als eigener Block, der die gesamte Breite nutzt — statt als
+       Inline-Text, der sich am Inhalt schrumpft. */
+    .hero-title-line { display: block; width: 100%; }
+    .hero-title br { display: none; }
     .hero-rotator { --rotator-line: 2.4em; }
     .hero-rotator-item { white-space: normal; }
     .hero-sub { font-size: 0.86rem; }
