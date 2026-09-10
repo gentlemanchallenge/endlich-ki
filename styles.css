@@ -742,16 +742,12 @@ header::before {
     .header-nav { display: none; }
     .logo { font-size: 1.75rem; }
 
-    /* Hero wird gestapelt: Bild oben (mit Titel darauf), Rest darunter */
+    /* Hero wird gestapelt: Bild oben (mit Titel darauf), Rest darunter.
+       Der Zoom/Crop der Grafik (Hub-Kern angeschnitten oben links) wird
+       per JS ueber das viewBox-Attribut umgeschaltet, nicht per CSS-
+       Transform — siehe Script am Ende der Seite (heroNet-Block). */
     .hero { background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-soft) 100%); }
     .hero-art { aspect-ratio: auto; height: 230px; }
-
-    /* Zoomt die Grafik 2x und verschiebt sie so, dass der Hub-Kern
-       (Werkzeug-Icon) angeschnitten oben links in der Box zu sehen ist,
-       statt die ganze Grafik verkleinert zu zeigen. Die Translate-Werte
-       sind Hub-Koordinaten aus dem viewBox (330,360) mit Gegenvorzeichen —
-       siehe SVG-Kommentar "Mobil wird diese Gruppe...". */
-    .hero-zoom-group { transform: scale(2) translate(-330px, -360px); transform-origin: 0 0; }
 
     .hero-overlay {
         position: static;
@@ -760,13 +756,18 @@ header::before {
         background: none;
         padding: 1.8rem;
     }
-    /* Der Titel liegt weiterhin auf der Grafik, nicht im gestapelten Text
-       darunter — dafuer aus dem Fluss genommen und ueber .hero-art gelegt
-       (.hero ist der naechste positionierte Vorfahre). Der Verlauf sorgt
-       fuer Lesbarkeit vor der hellen Hub-Grafik. */
+    /* Der Titel liegt auf der Grafik, nicht im gestapelten Text darunter —
+       dafuer aus dem Fluss genommen und exakt ueber .hero-art gelegt
+       (gleiche Hoehe wie .hero-art oben, .hero ist der positionierte
+       Vorfahre). flex + align-items:flex-end schiebt den Textblock an
+       den unteren Rand der Box, der Verlauf sorgt fuer Lesbarkeit vor
+       der hellen Hub-Grafik. */
     .hero-title {
         position: absolute;
-        left: 0; right: 0; bottom: 0;
+        top: 0; left: 0; right: 0;
+        height: 230px;
+        display: flex;
+        align-items: flex-end;
         margin: 0;
         padding: 1.4rem 1.3rem 1rem;
         background: linear-gradient(180deg, rgba(15, 23, 33, 0) 0%, rgba(15, 23, 33, 0.55) 40%, rgba(15, 23, 33, 0.92) 100%);
