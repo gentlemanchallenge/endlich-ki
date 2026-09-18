@@ -266,6 +266,39 @@ header::before {
 @media (prefers-reduced-motion: reduce) {
     .hero-rotator-track { animation: none; }
 }
+.hero-rotator2 {
+    display: inline-grid;
+}
+.hero-rotator2-item {
+    grid-area: 1 / 1;
+    white-space: nowrap;
+    opacity: 0;
+}
+.hero-rotator2-item:nth-child(1) { animation: heroCrossfade1 15s infinite; }
+.hero-rotator2-item:nth-child(2) { animation: heroCrossfade2 15s infinite; }
+.hero-rotator2-item:nth-child(3) { animation: heroCrossfade3 15s infinite; }
+@keyframes heroCrossfade1 {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    23.33% { opacity: 1; }
+    33.33%, 100% { opacity: 0; }
+}
+@keyframes heroCrossfade2 {
+    0%, 33.33% { opacity: 0; }
+    43.33% { opacity: 1; }
+    56.67% { opacity: 1; }
+    66.67%, 100% { opacity: 0; }
+}
+@keyframes heroCrossfade3 {
+    0%, 66.67% { opacity: 0; }
+    76.67% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-rotator2-item { animation: none; opacity: 0; }
+    .hero-rotator2-item:nth-child(1) { opacity: 1; }
+}
 .hero-sub {
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.88rem;
@@ -762,6 +795,7 @@ header::before {
     .hero-title { font-size: clamp(1.36rem, 6.6vw, 2.42rem); order: -1; }
     .hero-rotator { --rotator-line: 1.25em; }
     .hero-rotator-item { white-space: nowrap; }
+    .hero-rotator2-item { white-space: normal; }
     .hero-sub { font-size: 0.86rem; }
     .hero-actions .btn { flex: 1 1 auto; }
 
