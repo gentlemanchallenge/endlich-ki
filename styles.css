@@ -244,16 +244,17 @@ header::before {
     white-space: nowrap;
 }
 /* Jede Zeile haelt ~6s, damit dazwischen die Du-Zeile ihren eigenen Wechsel
-   bekommt - siehe .hero-rotator2 fuer die 1:1-Abwechslung. KI wechselt
-   direkt nach dem Laden zuerst (erster Wechsel bei 2.25s), Du folgt danach. */
+   bekommt - siehe .hero-rotator2 fuer die 1:1-Abwechslung. KI wechselt nach
+   dem Laden zuerst (erster Wechsel bei 1s), danach die gleich lange Pause
+   bis zum Du-Wechsel wie danach bis zum naechsten KI-Wechsel (je 1.875s). */
 @keyframes heroRotate {
-    0%, 6.25% { transform: translateY(0); }
-    8.33%, 22.92% { transform: translateY(calc(var(--rotator-line) * -1)); }
-    25%, 39.58% { transform: translateY(calc(var(--rotator-line) * -2)); }
-    41.67%, 56.25% { transform: translateY(calc(var(--rotator-line) * -3)); }
-    58.33%, 72.92% { transform: translateY(calc(var(--rotator-line) * -4)); }
-    75%, 89.58% { transform: translateY(calc(var(--rotator-line) * -5)); }
-    91.67%, 100% { transform: translateY(calc(var(--rotator-line) * -6)); }
+    0%, 2.78% { transform: translateY(0); }
+    4.86%, 19.44% { transform: translateY(calc(var(--rotator-line) * -1)); }
+    21.53%, 36.11% { transform: translateY(calc(var(--rotator-line) * -2)); }
+    38.19%, 52.78% { transform: translateY(calc(var(--rotator-line) * -3)); }
+    54.86%, 69.44% { transform: translateY(calc(var(--rotator-line) * -4)); }
+    71.53%, 86.11% { transform: translateY(calc(var(--rotator-line) * -5)); }
+    88.19%, 100% { transform: translateY(calc(var(--rotator-line) * -6)); }
 }
 .sr-only {
     position: absolute;
@@ -277,39 +278,38 @@ header::before {
     white-space: nowrap;
     opacity: 0;
 }
-/* 36s-Takt, exakt 1:1 mit .hero-rotator abwechselnd, aber 0.5s versetzt, damit
-   KI nach dem Laden immer zuerst wechselt (KI bei 2.25s/8.25s/...,
-   Du erst danach bei 3.5s/9.5s/...) - nie gleichzeitig, immer eine Zeile
-   nach der anderen. Die 3 Saetze laufen zweimal pro Zyklus durch (A,B,C,A,B,C). */
+/* 36s-Takt, abwechselnd mit .hero-rotator: KI wechselt zuerst (bei 1s je
+   Runde), Du folgt mit gleich langer Pause danach wie bis zum naechsten
+   KI-Wechsel. Der Crossfade selbst ist bewusst langsam (1.5s statt 0.75s). */
 .hero-rotator2-item:nth-child(1) { animation: heroCrossfadeA 36s infinite; }
 .hero-rotator2-item:nth-child(2) { animation: heroCrossfadeB 36s infinite; }
 .hero-rotator2-item:nth-child(3) { animation: heroCrossfadeC 36s infinite; }
 @keyframes heroCrossfadeA {
-    0%, 9.72% { opacity: 0; }
-    11.81% { opacity: 1; }
-    26.39% { opacity: 1; }
-    28.47%, 59.72% { opacity: 0; }
-    61.81% { opacity: 1; }
-    76.39% { opacity: 1; }
-    78.47%, 100% { opacity: 0; }
+    0%, 10.07% { opacity: 0; }
+    14.24% { opacity: 1; }
+    26.74% { opacity: 1; }
+    30.90%, 60.07% { opacity: 0; }
+    64.24% { opacity: 1; }
+    76.74% { opacity: 1; }
+    80.90%, 100% { opacity: 0; }
 }
 @keyframes heroCrossfadeB {
-    0%, 26.39% { opacity: 0; }
-    28.47% { opacity: 1; }
-    43.06% { opacity: 1; }
-    45.14%, 76.39% { opacity: 0; }
-    78.47% { opacity: 1; }
-    93.06% { opacity: 1; }
-    95.14%, 100% { opacity: 0; }
+    0%, 26.74% { opacity: 0; }
+    30.90% { opacity: 1; }
+    43.40% { opacity: 1; }
+    47.57%, 76.74% { opacity: 0; }
+    80.90% { opacity: 1; }
+    93.40% { opacity: 1; }
+    97.57%, 100% { opacity: 0; }
 }
 @keyframes heroCrossfadeC {
     0% { opacity: 1; }
-    9.72% { opacity: 1; }
-    11.81%, 43.06% { opacity: 0; }
-    45.14% { opacity: 1; }
-    59.72% { opacity: 1; }
-    61.81%, 93.06% { opacity: 0; }
-    95.14%, 100% { opacity: 1; }
+    10.07% { opacity: 1; }
+    14.24%, 43.40% { opacity: 0; }
+    47.57% { opacity: 1; }
+    60.07% { opacity: 1; }
+    64.24%, 93.40% { opacity: 0; }
+    97.57%, 100% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
     .hero-rotator2-item { animation: none; opacity: 0; }
