@@ -274,26 +274,30 @@ header::before {
     white-space: nowrap;
     opacity: 0;
 }
-.hero-rotator2-item:nth-child(1) { animation: heroCrossfade1 15s infinite; }
-.hero-rotator2-item:nth-child(2) { animation: heroCrossfade2 15s infinite; }
-.hero-rotator2-item:nth-child(3) { animation: heroCrossfade3 15s infinite; }
-@keyframes heroCrossfade1 {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    23.33% { opacity: 1; }
-    33.33%, 100% { opacity: 0; }
+/* 18s-Takt wie .hero-rotator, aber die Wechsel liegen zeitversetzt in dessen
+   Haltephasen (bei 4-5s / 10-11s / 16-17s), damit KI- und Du-Zeile nie
+   gleichzeitig wechseln, sondern sich abwechseln. */
+.hero-rotator2-item:nth-child(1) { animation: heroCrossfadeA 18s infinite; }
+.hero-rotator2-item:nth-child(2) { animation: heroCrossfadeB 18s infinite; }
+.hero-rotator2-item:nth-child(3) { animation: heroCrossfadeC 18s infinite; }
+@keyframes heroCrossfadeA {
+    0% { opacity: 1; }
+    22.22% { opacity: 1; }
+    27.78% { opacity: 0; }
+    88.89% { opacity: 0; }
+    94.44%, 100% { opacity: 1; }
 }
-@keyframes heroCrossfade2 {
-    0%, 33.33% { opacity: 0; }
-    43.33% { opacity: 1; }
-    56.67% { opacity: 1; }
-    66.67%, 100% { opacity: 0; }
+@keyframes heroCrossfadeB {
+    0%, 22.22% { opacity: 0; }
+    27.78% { opacity: 1; }
+    55.56% { opacity: 1; }
+    61.11%, 100% { opacity: 0; }
 }
-@keyframes heroCrossfade3 {
-    0%, 66.67% { opacity: 0; }
-    76.67% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+@keyframes heroCrossfadeC {
+    0%, 55.56% { opacity: 0; }
+    61.11% { opacity: 1; }
+    88.89% { opacity: 1; }
+    94.44%, 100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
     .hero-rotator2-item { animation: none; opacity: 0; }
