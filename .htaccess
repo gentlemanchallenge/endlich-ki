@@ -20,3 +20,6 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 # lib/ und data/ und config/ sind keine HTTP-Endpunkte
 RewriteEngine On
 RewriteRule ^(lib|data|config)/ - [F,L]
+
+# /download ohne .html-Endung ausliefern
+RewriteRule ^download/?$ download.html [L]
