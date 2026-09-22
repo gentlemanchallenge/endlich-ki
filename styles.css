@@ -781,6 +781,7 @@ header::before {
 .legal-content p { margin-bottom: 0.8rem; }
 .legal-content ul { margin: 0.5rem 0 1rem 1.5rem; }
 .legal-content a { color: var(--accent-gold); }
+.legal-content a.btn { color: var(--primary-navy); }
 .legal-content .draft-badge { text-transform: none; }
 
 /* ---------- Responsive ---------- */
