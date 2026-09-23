@@ -14,6 +14,13 @@ set_time_limit(120);
 
 const PCLOUD_CODE = 'XZK17k7ZJ51Sh3l3erYXqMBWzyq8S5L6k2uX';
 const FILENAME = 'Setup-RustDesk.zip';
+const PASSWORD_HASH = 'ef5137062071b37ccdb05f936702f7c328722e146f7f3c248d1fc91e0feaf9ae';
+
+$password = $_POST['password'] ?? '';
+if (!hash_equals(PASSWORD_HASH, hash('sha256', $password))) {
+    header('Location: /download.php?error=1', true, 302);
+    exit;
+}
 
 $response = @file_get_contents(
     'https://eapi.pcloud.com/getpublinkdownload?code=' . PCLOUD_CODE

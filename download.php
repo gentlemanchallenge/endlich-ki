@@ -33,9 +33,16 @@
                 <li>Mir die angezeigte ID und das Passwort durchgeben (z. B. per Telefon oder WhatsApp), damit ich mich aufschalten kann.</li>
             </ul>
 
-            <p style="text-align:center; margin: 2rem 0;">
-                <a href="/rustdesk-download.php" class="btn btn-lg">Fernwartungs-Tool herunterladen (Windows, ca. 24&nbsp;MB)</a>
-            </p>
+            <form action="/rustdesk-download.php" method="post" style="text-align:center; margin: 2rem 0;">
+                <p style="margin-bottom:1rem;">
+                    <label for="password" style="display:block; margin-bottom:.5rem;">Passwort</label>
+                    <input type="password" id="password" name="password" required autocomplete="off" style="padding:.6rem 1rem; border:1px solid #ccc; border-radius:6px; width:100%; max-width:320px;">
+                </p>
+                <button type="submit" class="btn btn-lg">Fernwartungs-Tool herunterladen (Windows, ca. 24&nbsp;MB)</button>
+                <?php if (!empty($_GET['error'])): ?>
+                    <p style="color:#c0392b; margin-top:1rem;">Falsches Passwort. Bitte erneut versuchen.</p>
+                <?php endif; ?>
+            </form>
 
             <p style="margin-top:2rem;"><a href="/">&larr; Zurück zur Startseite</a></p>
         </div>

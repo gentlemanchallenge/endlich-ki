@@ -22,4 +22,4 @@ RewriteEngine On
 RewriteRule ^(lib|data|config)/ - [F,L]
 
 # /download ohne .html-Endung ausliefern
-RewriteRule ^download/?$ download.html [L]
+RewriteRule ^download/?$ download.php [L]
