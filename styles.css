@@ -433,6 +433,17 @@ header::before {
     background: linear-gradient(transparent 65%, rgba(201, 166, 107, 0.35) 65%);
     font-weight: 600;
 }
+.voice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 1rem auto 0;
+}
+.voice-card-sm { margin: 0; max-width: none; padding: 1.4rem 1.3rem 1rem; display: flex; flex-direction: column; }
+.voice-card-sm .voice-mark { font-size: 3rem; left: 0.7rem; }
+.voice-card-sm blockquote { flex: 1; }
+.voice-card-sm blockquote p { font-size: 0.86rem; padding-top: 0.5rem; }
 .voice-author {
     margin-top: 1rem;
     padding-top: 0.8rem;
@@ -881,6 +892,7 @@ header::before {
     .hero-sub { font-size: 0.86rem; }
     .hero-actions .btn { flex: 1 1 auto; }
 
+    .voice-grid { grid-template-columns: 1fr; }
     .pillar-grid, .fit-grid, .check-list, .form-row, .usecase-grid, .pain-grid, .stats-grid.stats-grid-3 { grid-template-columns: 1fr; }
     .check-list { gap: 0.8rem; }
     .trainer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -894,6 +906,7 @@ header::before {
     .container { padding: 1rem; }
     .content-section, .signup-section, .stats-section, .final-cta, .voices-section { padding: 1.6rem 1.3rem; border-radius: 12px; }
     .voice-card { padding: 1.3rem 1.1rem 1rem; }
+    .voice-card-sm { padding: 1.3rem 1.1rem 1rem; }
     .voice-card blockquote p { font-size: 0.9rem; }
     .voices-title { font-size: 1.35rem; }
     .price-card { padding: 1.8rem 1.4rem; }
