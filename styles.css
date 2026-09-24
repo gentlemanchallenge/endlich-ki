@@ -370,7 +370,7 @@ header::before {
 .voices-section {
     background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-soft) 100%);
     border-radius: 16px;
-    padding: 3rem;
+    padding: 1.8rem 2rem 2rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 10px 40px var(--shadow);
     position: relative;
@@ -381,100 +381,67 @@ header::before {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(circle at 12% 0%, rgba(201, 166, 107, 0.22) 0%, transparent 50%),
-        radial-gradient(circle at 92% 100%, rgba(201, 166, 107, 0.12) 0%, transparent 50%);
+    background: radial-gradient(circle at 12% 0%, rgba(201, 166, 107, 0.16) 0%, transparent 50%);
 }
 .voices-section > * { position: relative; z-index: 1; }
-.voices-head { text-align: center; margin-bottom: 2rem; }
+.voices-head { text-align: center; margin-bottom: 1.2rem; }
 .voices-eyebrow {
     display: inline-block;
-    padding: 0.3rem 0.95rem;
-    border: 1px solid rgba(201, 166, 107, 0.5);
-    border-radius: 50px;
     color: var(--accent-gold);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.35rem;
 }
 .voices-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2.3rem;
-    line-height: 1.2;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.25;
     color: white;
 }
 .voice-card {
     position: relative;
-    max-width: 860px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 2.6rem 3rem 2rem;
+    padding: 1.5rem 2rem 1.2rem;
     background: white;
-    border-radius: 16px;
-    border-top: 4px solid var(--accent-gold);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border-top: 3px solid var(--accent-gold);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
 }
 .voice-mark {
     position: absolute;
-    top: -0.1rem;
-    left: 1.6rem;
+    top: 0;
+    left: 0.9rem;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 7rem;
+    font-size: 3.6rem;
     line-height: 1;
-    font-weight: 700;
     color: var(--accent-gold);
-    opacity: 0.55;
+    opacity: 0.5;
     pointer-events: none;
 }
 .voice-card blockquote p {
     position: relative;
-    font-size: 1.25rem;
+    font-size: 0.95rem;
     line-height: 1.7;
     color: var(--primary-navy);
-    font-weight: 500;
+    font-weight: 400;
 }
 .voice-card blockquote strong {
-    background: linear-gradient(transparent 62%, rgba(201, 166, 107, 0.4) 62%);
-    font-weight: 700;
+    background: linear-gradient(transparent 65%, rgba(201, 166, 107, 0.35) 65%);
+    font-weight: 600;
 }
 .voice-author {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    flex-wrap: wrap;
-    margin-top: 1.8rem;
-    padding-top: 1.3rem;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
     border-top: 1px solid #ececec;
 }
-.voice-avatar {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: var(--primary-navy);
-    color: var(--accent-gold);
-    border: 2px solid var(--accent-gold);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    flex-shrink: 0;
-}
-.voice-who { display: flex; flex-direction: column; line-height: 1.4; font-size: 0.85rem; color: #777; }
-.voice-who strong { font-size: 0.98rem; color: var(--primary-navy); }
-.voice-who a:link, .voice-who a:visited { color: var(--accent-gold); font-weight: 600; text-decoration: none; }
+.voice-who { display: flex; flex-direction: column; line-height: 1.4; font-size: 0.78rem; color: #888; }
+.voice-who strong { font-size: 0.86rem; font-weight: 600; color: var(--primary-navy); }
+.voice-who a:link, .voice-who a:visited { color: var(--accent-gold); font-weight: 500; text-decoration: none; }
 .voice-who a:hover { text-decoration: underline; }
-.voice-tag {
-    margin-left: auto;
-    padding: 0.35rem 0.9rem;
-    background: var(--bg-light);
-    border-radius: 50px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--primary-navy);
-}
 
 /* ---------- Painpoint-Karten ---------- */
 .pain-grid {
@@ -885,7 +852,7 @@ header::before {
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {
     .content-section, .signup-section { padding: 2.2rem; }
-    .stats-section, .final-cta, .voices-section { padding: 2.2rem; }
+    .stats-section, .final-cta { padding: 2.2rem; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
     .stats-grid.stats-grid-3 { grid-template-columns: repeat(3, 1fr); }
     .price-wrap, .signup-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -920,16 +887,15 @@ header::before {
     .trainer-photo { max-width: 200px; }
     .agenda-item { grid-template-columns: 1fr; gap: 0.4rem; }
     .section-title { font-size: 1.75rem; }
-    .final-cta h2, .stats-title, .voices-title { font-size: 1.6rem; }
-    .voice-card { padding: 2.2rem 1.6rem 1.5rem; }
-    .voice-card blockquote p { font-size: 1.05rem; }
-    .voice-tag { margin-left: 0; }
+    .final-cta h2, .stats-title { font-size: 1.6rem; }
 }
 
 @media (max-width: 560px) {
     .container { padding: 1rem; }
     .content-section, .signup-section, .stats-section, .final-cta, .voices-section { padding: 1.6rem 1.3rem; border-radius: 12px; }
-    .voice-card { padding: 2.2rem 1.2rem 1.3rem; }
+    .voice-card { padding: 1.3rem 1.1rem 1rem; }
+    .voice-card blockquote p { font-size: 0.9rem; }
+    .voices-title { font-size: 1.35rem; }
     .price-card { padding: 1.8rem 1.4rem; }
     .price-amount { font-size: 2.8rem; }
     .footer-nav { gap: 1rem; }
