@@ -321,57 +321,65 @@
             <span class="voices-eyebrow">Kundenstimmen</span>
             <h2 class="voices-title">Das sagen Betriebe, für die ich gebaut habe</h2>
         </div>
-        <figure class="voice-card">
-            <span class="voice-mark" aria-hidden="true">„</span>
-            <blockquote>
-                <p>Mein Computer guckt jetzt in meine Mails und erstellt für jede Anfrage <strong>automatisch ein Angebot</strong>. Ich schaue einmal täglich kurz drüber, korrigiere Kleinigkeiten und klicke auf versenden. Fertig. <strong>Ich hätte nie gedacht, dass das so einfach geht!</strong></p>
-            </blockquote>
-            <figcaption class="voice-author">
-                <span class="voice-who">
-                    <strong>Erik Hermann</strong>
-                    <span>Terrassenüberdachungen · <a href="https://www.legawo.de" target="_blank" rel="noopener">legawo.de</a></span>
-                </span>
-            </figcaption>
-        </figure>
+        <div class="voice-carousel">
+            <button type="button" class="voice-arrow voice-arrow-prev" id="voicePrev" aria-label="Vorherige Kundenstimme">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="voice-track" id="voiceTrack" role="region" aria-label="Kundenstimmen" tabindex="0">
+                <figure class="voice-card voice-card-sm">
+                    <span class="voice-mark" aria-hidden="true">„</span>
+                    <blockquote>
+                        <p>Mein Computer guckt jetzt in meine Mails und erstellt für jede Anfrage <strong>automatisch ein Angebot</strong>. Ich schaue einmal täglich kurz drüber, korrigiere Kleinigkeiten und klicke auf versenden. Fertig. <strong>Ich hätte nie gedacht, dass das so einfach geht!</strong></p>
+                    </blockquote>
+                    <figcaption class="voice-author">
+                        <span class="voice-who">
+                            <strong>Erik Hermann</strong>
+                            <span>Terrassenüberdachungen · <a href="https://www.legawo.de" target="_blank" rel="noopener">legawo.de</a></span>
+                        </span>
+                    </figcaption>
+                </figure>
 
-        <!-- PLATZHALTER: die drei Stimmen unten sind erfunden, vor dem Livegang ersetzen oder entfernen -->
-        <div class="voice-grid">
-            <figure class="voice-card voice-card-sm">
-                <span class="voice-mark" aria-hidden="true">„</span>
-                <blockquote>
-                    <p>Meine Jungs sprechen abends kurz ins Handy, was sie gemacht haben. Am nächsten Morgen weiß ich, <strong>was ich zusätzlich berechnen kann</strong>. Früher wäre das einfach untergegangen.</p>
-                </blockquote>
-                <figcaption class="voice-author">
-                    <span class="voice-who">
-                        <strong>Thomas Mustermann</strong>
-                        <span>Elektrotechnik</span>
-                    </span>
-                </figcaption>
-            </figure>
-            <figure class="voice-card voice-card-sm">
-                <span class="voice-mark" aria-hidden="true">„</span>
-                <blockquote>
-                    <p>Die Einsatzplanung stand früher nur in meinem Kopf. Jetzt sagt mir der Agent, wer wo hinmuss, und <strong>informiert das Team selbst</strong>. Ich habe abends endlich wieder Ruhe.</p>
-                </blockquote>
-                <figcaption class="voice-author">
-                    <span class="voice-who">
-                        <strong>Sabine Beispiel</strong>
-                        <span>Malerbetrieb</span>
-                    </span>
-                </figcaption>
-            </figure>
-            <figure class="voice-card voice-card-sm">
-                <span class="voice-mark" aria-hidden="true">„</span>
-                <blockquote>
-                    <p>Ich hatte null Lust, mich in ein neues Tool einzuarbeiten. Das musste ich auch nicht: <strong>Jonathan hat alles eingerichtet</strong>, ich nutze es einfach. Das hat mich überzeugt.</p>
-                </blockquote>
-                <figcaption class="voice-author">
-                    <span class="voice-who">
-                        <strong>Jens Platzhalter</strong>
-                        <span>Heizung &amp; Sanitär</span>
-                    </span>
-                </figcaption>
-            </figure>
+                <!-- PLATZHALTER: die folgenden drei Stimmen sind erfunden, vor dem Livegang ersetzen oder entfernen -->
+                <figure class="voice-card voice-card-sm">
+                    <span class="voice-mark" aria-hidden="true">„</span>
+                    <blockquote>
+                        <p>Meine Jungs sprechen abends kurz ins Handy, was sie gemacht haben. Am nächsten Morgen weiß ich, <strong>was ich zusätzlich berechnen kann</strong>. Früher wäre das einfach untergegangen.</p>
+                    </blockquote>
+                    <figcaption class="voice-author">
+                        <span class="voice-who">
+                            <strong>Thomas Mustermann</strong>
+                            <span>Elektrotechnik</span>
+                        </span>
+                    </figcaption>
+                </figure>
+                <figure class="voice-card voice-card-sm">
+                    <span class="voice-mark" aria-hidden="true">„</span>
+                    <blockquote>
+                        <p>Die Einsatzplanung stand früher nur in meinem Kopf. Jetzt sagt mir der Agent, wer wo hinmuss, und <strong>informiert das Team selbst</strong>. Ich habe abends endlich wieder Ruhe.</p>
+                    </blockquote>
+                    <figcaption class="voice-author">
+                        <span class="voice-who">
+                            <strong>Sabine Beispiel</strong>
+                            <span>Malerbetrieb</span>
+                        </span>
+                    </figcaption>
+                </figure>
+                <figure class="voice-card voice-card-sm">
+                    <span class="voice-mark" aria-hidden="true">„</span>
+                    <blockquote>
+                        <p>Ich hatte null Lust, mich in ein neues Tool einzuarbeiten. Das musste ich auch nicht: <strong>Jonathan hat alles eingerichtet</strong>, ich nutze es einfach. Das hat mich überzeugt.</p>
+                    </blockquote>
+                    <figcaption class="voice-author">
+                        <span class="voice-who">
+                            <strong>Jens Platzhalter</strong>
+                            <span>Heizung &amp; Sanitär</span>
+                        </span>
+                    </figcaption>
+                </figure>
+            </div>
+            <button type="button" class="voice-arrow voice-arrow-next" id="voiceNext" aria-label="Nächste Kundenstimme">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
         </div>
     </section>
 
@@ -887,6 +895,31 @@
             hint.style.fontWeight = '600';
         };
         xhr.send(new FormData(form));
+    });
+})();
+
+// Kundenstimmen-Karussell: Pfeile scrollen den Track um eine Karte weiter,
+// am Ende springt "weiter" zurueck an den Anfang und "zurueck" ans Ende.
+(function () {
+    var track = document.getElementById('voiceTrack');
+    var prev  = document.getElementById('voicePrev');
+    var next  = document.getElementById('voiceNext');
+    if (!track || !prev || !next || track.children.length < 2) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(dir) {
+        var step = track.children[1].offsetLeft - track.children[0].offsetLeft;
+        var max  = track.scrollWidth - track.clientWidth;
+        var x    = track.scrollLeft;
+        var target;
+        if (dir > 0) target = x >= max - 4 ? 0 : Math.min(x + step, max);
+        else         target = x <= 4 ? max : Math.max(x - step, 0);
+        track.scrollTo({ left: target, behavior: reduce ? 'auto' : 'smooth' });
+    }
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    track.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); go(-1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
     });
 })();
 </script>
