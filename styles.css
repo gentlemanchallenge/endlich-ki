@@ -131,6 +131,7 @@ header::before {
     width: 100%;
     border-radius: 16px;
     overflow: hidden;
+    margin-bottom: 1.5rem;
     box-shadow: 0 10px 40px var(--shadow);
     animation: fadeIn 0.9s ease-out backwards;
     background: var(--primary-navy);
@@ -144,6 +145,7 @@ header::before {
    preserveAspectRatio="slice" wie ein object-fit: cover. */
 .hero-art {
     grid-area: 1 / 1;
+    align-self: stretch;
     position: relative;
     width: 100%;
     aspect-ratio: 1280 / 720;
