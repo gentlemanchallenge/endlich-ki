@@ -204,11 +204,8 @@ header::before {
     background: linear-gradient(to left, rgba(26, 35, 50, 0.90) 0%, rgba(26, 35, 50, 0.72) 58%, transparent 100%);
 }
 .hero-eyebrow {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent-gold);
+    height: 2px;
+    background: var(--accent-gold);
     margin-bottom: 0.8rem;
 }
 .hero-title {
