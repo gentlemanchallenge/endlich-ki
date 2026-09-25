@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 ini_set('log_errors', '1');
 set_time_limit(120);
 
-const PCLOUD_CODE = 'XZK17k7ZJ51Sh3l3erYXqMBWzyq8S5L6k2uX';
+const PCLOUD_CODE = 'XZ0b5k7Z8vHQCzXo1O5KlWFKkP0swL5eShPy';
 const FILENAME = 'Setup-RustDesk.zip';
 const PASSWORD_HASH = 'ef5137062071b37ccdb05f936702f7c328722e146f7f3c248d1fc91e0feaf9ae';
 
