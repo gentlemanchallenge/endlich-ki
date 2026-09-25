@@ -134,12 +134,16 @@ header::before {
     box-shadow: 0 10px 40px var(--shadow);
     animation: fadeIn 0.9s ease-out backwards;
     background: var(--primary-navy);
+    /* Grafik und Overlay teilen sich eine Zelle: Die Hoehe kommt von der Grafik,
+       waechst aber mit, wenn das Overlay (z.B. mit Bild) mehr Platz braucht. */
+    display: grid;
 }
 /* Die Hero-Grafik liegt inline im HTML (Maus-Parallaxe braucht Zugriff auf das
    SVG-DOM). Weil ein inline-SVG kein ersetztes Element ist, greift object-fit
    nicht — die Hoehe kommt deshalb vom Container, das SVG fuellt ihn per
    preserveAspectRatio="slice" wie ein object-fit: cover. */
 .hero-art {
+    grid-area: 1 / 1;
     position: relative;
     width: 100%;
     aspect-ratio: 1280 / 720;
@@ -190,10 +194,10 @@ header::before {
     .hn-wave { opacity: 0.25; }
 }
 .hero-overlay {
-    position: absolute;
-    top: 0; right: 0;
+    grid-area: 1 / 1;
+    justify-self: end;
+    position: relative;
     width: 58%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -202,6 +206,14 @@ header::before {
     /* Die Hero-Grafik blendet nach rechts selbst schon aus, deshalb reicht ein
        weicherer Verlauf — so bleibt das Netzwerk hinter der Headline sichtbar. */
     background: linear-gradient(to left, rgba(26, 35, 50, 0.90) 0%, rgba(26, 35, 50, 0.72) 58%, transparent 100%);
+}
+.hero-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1.1rem;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
 }
 .hero-eyebrow {
     width: 10.5rem;
@@ -918,6 +930,7 @@ header::before {
         background: none;
         padding: 1.8rem;
     }
+    .hero-image { order: -2; }
     .hero-title { font-size: clamp(1.36rem, 6.6vw, 2.42rem); order: -1; }
     .hero-rotator { --rotator-line: 1.25em; }
     .hero-rotator-item { white-space: nowrap; }
