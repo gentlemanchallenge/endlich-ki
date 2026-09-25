@@ -138,7 +138,7 @@ if ($botReason !== null) {
 
 // ─── Pflichtfelder prüfen ────────────────────────────────────────────────
 
-$required = ['name', 'email'];
+$required = ['name', 'email', 'telefon'];
 foreach ($required as $field) {
     if (empty(trim($data[$field] ?? ''))) {
         http_response_code(400);
@@ -165,7 +165,6 @@ $betrieb        = htmlspecialchars(trim($data['firma'] ?? ''));
 $name           = htmlspecialchars(trim($data['name']));
 $email          = htmlspecialchars(trim($data['email']));
 $telefon        = htmlspecialchars(trim($data['telefon'] ?? ''));
-$erreichbarkeit = htmlspecialchars(trim($data['erreichbarkeit'] ?? ''));
 $aufgabe        = htmlspecialchars(trim($data['aufgabe'] ?? ''));
 
 // ─── Admin-E-Mail aufbauen ───────────────────────────────────────────────
@@ -214,7 +213,6 @@ $adminHtml = "
                 <div class='value'><a href='mailto:$email'>$email</a></div>
             </div>
             " . mailField('Telefon', $telefon) . "
-            " . mailField('Am besten erreichbar', $erreichbarkeit) . "
             " . mailField('Größter Zeitfresser im Büro', $aufgabe) . "
         </div>
         <div class='footer'>
