@@ -204,8 +204,8 @@ header::before {
     background: linear-gradient(to left, rgba(26, 35, 50, 0.90) 0%, rgba(26, 35, 50, 0.72) 58%, transparent 100%);
 }
 .hero-eyebrow {
-    width: 3.5rem;
-    align-self: center;
+    width: 10.5rem;
+    align-self: flex-start;
     height: 2px;
     background: var(--accent-gold);
     margin-bottom: 0.8rem;
