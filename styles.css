@@ -973,3 +973,104 @@ header::before {
     .logo { font-size: 1.25rem; }
     .header-cta { padding: 0.45rem 1rem; font-size: 0.74rem; }
 }
+
+/* ---------- Landingpage /tv-beitrag (Meta-Ads) ---------- */
+.lp-header {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-soft) 100%);
+    padding: 0.7rem 0;
+}
+.lp-header-inner { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+.lockup { display: inline-flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+.lockup .mark { display: block; width: 2.4rem; height: 2.4rem; flex-shrink: 0; }
+.lockup .ink-gold { color: var(--accent-gold); }
+.lockup-word {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    text-transform: lowercase;
+    white-space: nowrap;
+    color: #fff;
+}
+.lockup-word .wm-ki { text-transform: uppercase; color: var(--accent-gold); }
+.lockup-word .wm-de { opacity: 0.55; }
+
+.lp-main { max-width: 960px; margin: 0 auto; padding: 1.1rem 1.25rem 1.5rem; }
+.lp-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--primary-navy);
+    margin-bottom: 0.35rem;
+}
+.lp-title em { font-style: normal; color: var(--accent-gold); }
+.lp-sub { font-size: 1rem; color: #555; margin-bottom: 0.9rem; }
+
+.lp-video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--primary-navy);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px var(--shadow);
+}
+.lp-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lp-unmute {
+    position: absolute;
+    top: 0.6rem; left: 0.6rem;
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.5rem 0.95rem;
+    background: rgba(26, 35, 50, 0.88);
+    color: #fff;
+    border: 1px solid var(--accent-gold);
+    border-radius: 50px;
+    font: 600 0.85rem 'Montserrat', sans-serif;
+    cursor: pointer;
+    animation: pulse 2.2s ease-in-out infinite;
+}
+.lp-unmute[hidden] { display: none; }
+
+.lp-cta { margin: 1rem 0 0.4rem; }
+.lp-cta .btn {
+    display: block;
+    width: 100%;
+    padding: 1.05rem 1.5rem;
+    font-size: 1.15rem;
+    box-shadow: 0 6px 24px rgba(201, 166, 107, 0.45);
+}
+.lp-cta-note { text-align: center; font-size: 0.82rem; color: #777; margin-top: 0.5rem; }
+
+.lp-points {
+    list-style: none;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px var(--shadow);
+    padding: 1.4rem 1.5rem;
+    margin: 1.6rem 0 1.2rem;
+    display: grid;
+    gap: 0.9rem;
+}
+.lp-points li { padding-left: 1.6rem; position: relative; font-size: 0.95rem; color: #444; line-height: 1.55; }
+.lp-points li::before { content: '›'; position: absolute; left: 0.2rem; top: -0.1rem; font-size: 1.4rem; font-weight: 700; color: var(--accent-gold); }
+.lp-points strong { color: var(--primary-navy); }
+
+.lp-who { display: flex; align-items: center; gap: 0.9rem; margin: 1.2rem 0 1.4rem; font-size: 0.88rem; color: #555; line-height: 1.45; }
+.lp-who img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-gold); flex-shrink: 0; }
+.lp-who strong { color: var(--primary-navy); }
+
+@media (min-width: 821px) {
+    .lp-title { font-size: 3rem; }
+    .lp-cta .btn { max-width: 420px; margin: 0 auto; }
+}
+@media (max-width: 560px) {
+    .lp-header { padding: 0.55rem 0; }
+    .lockup .mark { width: 2rem; height: 2rem; }
+    .lockup-word { font-size: 1.5rem; }
+    .lp-main { padding-top: 0.8rem; }
+    .lp-title { font-size: 1.95rem; }
+    .lp-sub { font-size: 0.92rem; margin-bottom: 0.7rem; }
+    .lp-video { margin: 0 -1.25rem; border-radius: 0; }
+    .lp-cta .btn { font-size: 1.1rem; padding: 1rem 1rem; }
+}

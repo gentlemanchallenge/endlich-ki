@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwerk am Limit: Kann KI im Büro helfen? | endlich-ki.de</title>
+    <meta name="description" content="Kurzer Beitrag: Wie Handwerksbetriebe mit KI im Büro Zeit sparen. Danach kostenlose Betriebsanalyse anfragen.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://endlich-ki.de/tv-beitrag">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preload" as="image" href="/bilder/tv-beitrag-poster.webp">
+    <link rel="stylesheet" href="/fonts.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mark-hex-badge" viewBox="0 0 100 100">
+        <path d="M50,10 L85,30 L85,70 L50,90 L15,70 L15,30 Z" fill="#1a2332" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="mark-spark-gold" viewBox="0 0 100 100">
+        <path d="M50,34 L34,64 L66,64 Z" fill="none" stroke="#e0c078" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#e0c078"><circle cx="50" cy="34" r="4.2"/><circle cx="34" cy="64" r="4.2"/><circle cx="66" cy="64" r="4.2"/></g>
+    </symbol>
+</svg>
+
+<header class="lp-header">
+    <div class="lp-header-inner">
+        <a href="/" class="lockup" aria-label="endlich-ki.de – zur Startseite">
+            <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#mark-hex-badge" class="ink-gold"/><use href="#mark-spark-gold"/></svg>
+            <span class="lockup-word"><span class="wm-endlich">endlich-</span><span class="wm-ki">ki</span><span class="wm-de">.de</span></span>
+        </a>
+    </div>
+</header>
+
+<main class="lp-main">
+    <h1 class="lp-title">Handwerk am Limit: <em>Kann KI im Büro helfen?</em></h1>
+    <p class="lp-sub">Kurzer Beitrag, knapp 3 Minuten. Am besten mit Ton.</p>
+
+    <div class="lp-video">
+        <video id="lpVideo" autoplay muted playsinline controls preload="auto" poster="/bilder/tv-beitrag-poster.webp">
+            <source src="/videos/tv-beitrag.mp4" type="video/mp4">
+        </video>
+        <button type="button" class="lp-unmute" id="lpUnmute">&#128266; Ton an</button>
+    </div>
+
+    <div class="lp-cta">
+        <a href="/#kontakt" class="btn" data-lp-cta>Kostenlose Analyse</a>
+        <p class="lp-cta-note">Unverbindlich &middot; ohne Verpflichtung</p>
+    </div>
+
+    <ul class="lp-points">
+        <li><strong>Papierkram frisst den Feierabend.</strong> Handwerksverbände sprechen von bis zu 20 Stunden pro Woche im Büro.</li>
+        <li><strong>Die KI macht den Entwurf, du gibst frei.</strong> Angebote, Materialbedarf, Protokolle. Du schaust kurz drüber und entscheidest.</li>
+        <li><strong>Kein Systemwechsel.</strong> Die KI wird an deine bestehende Software und deine Abläufe angebunden, bedient wird sie per Foto oder Sprachnachricht.</li>
+    </ul>
+
+    <div class="lp-who">
+        <img src="/bilder/jonathan-enns-portrait.jpg" alt="Jonathan Enns" width="56" height="56" loading="lazy">
+        <div><strong>Jonathan Enns</strong><br>Ich baue KI-Agenten für Handwerksbetriebe. In der kostenlosen Analyse schauen wir, wo bei dir die meiste Bürozeit hängt.</div>
+    </div>
+
+    <div class="lp-cta">
+        <a href="/#kontakt" class="btn" data-lp-cta>Kostenlose Analyse</a>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <nav class="footer-nav">
+            <a href="/">Startseite</a>
+            <a href="/impressum.html">Impressum</a>
+            <a href="/datenschutz.html">Datenschutz</a>
+        </nav>
+        <p class="footer-text">KI-Agenten für Handwerksbetriebe &middot; Jonathan Enns<br>&copy; 2026 endlich-ki.de</p>
+    </div>
+</footer>
+
+<script>
+(function () {
+    var v = document.getElementById('lpVideo');
+    var b = document.getElementById('lpUnmute');
+    b.addEventListener('click', function () {
+        v.muted = false;
+        v.play();
+        b.hidden = true;
+    });
+    // Sobald jemand über die Player-Steuerung Ton macht, Button ausblenden.
+    v.addEventListener('volumechange', function () { if (!v.muted) b.hidden = true; });
+    // Autoplay blockiert (z. B. Stromsparmodus): Button überflüssig, Poster + Play übernehmen.
+    var p = v.play();
+    if (p && p.catch) p.catch(function () { b.hidden = true; });
+
+    // UTM-Parameter der Ad an den CTA hängen, damit sie auf der Startseite ankommen.
+    if (location.search) {
+        document.querySelectorAll('[data-lp-cta]').forEach(function (a) {
+            a.href = '/' + location.search + '#kontakt';
+        });
+    }
+})();
+</script>
+</body>
+</html>
