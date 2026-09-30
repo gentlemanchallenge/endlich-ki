@@ -42,6 +42,9 @@
             <source src="/videos/tv-beitrag.mp4" type="video/mp4">
         </video>
         <button type="button" class="lp-unmute" id="lpUnmute">&#128266; Ton an</button>
+        <button type="button" class="lp-replay" id="lpReplay" aria-label="Video erneut abspielen" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+        </button>
     </div>
 
     <div class="lp-cta">
@@ -80,10 +83,20 @@
 (function () {
     var v = document.getElementById('lpVideo');
     var b = document.getElementById('lpUnmute');
+    var r = document.getElementById('lpReplay');
+    // "Ton an": Video von vorne starten, mit Ton.
     b.addEventListener('click', function () {
         v.muted = false;
+        v.currentTime = 0;
         v.play();
         b.hidden = true;
+    });
+    // Am Ende bleibt der letzte Frame stehen, Replay-Button in der Mitte.
+    v.addEventListener('ended', function () { r.hidden = false; });
+    v.addEventListener('play', function () { r.hidden = true; });
+    r.addEventListener('click', function () {
+        v.currentTime = 0;
+        v.play();
     });
     // Sobald jemand über die Player-Steuerung Ton macht, Button ausblenden.
     v.addEventListener('volumechange', function () { if (!v.muted) b.hidden = true; });

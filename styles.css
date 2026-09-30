@@ -1019,7 +1019,7 @@ header::before {
 .lp-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .lp-unmute {
     position: absolute;
-    top: 0.6rem; left: 0.6rem;
+    top: 0.6rem; right: 0.6rem;
     display: inline-flex; align-items: center; gap: 0.45rem;
     padding: 0.5rem 0.95rem;
     background: rgba(26, 35, 50, 0.88);
@@ -1031,6 +1031,20 @@ header::before {
     animation: pulse 2.2s ease-in-out infinite;
 }
 .lp-unmute[hidden] { display: none; }
+.lp-replay {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px; height: 72px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(26, 35, 50, 0.88);
+    color: #fff;
+    border: 2px solid var(--accent-gold);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.lp-replay svg { width: 34px; height: 34px; }
+.lp-replay[hidden] { display: none; }
 
 .lp-cta { margin: 1rem 0 0.4rem; }
 .lp-cta .btn {
