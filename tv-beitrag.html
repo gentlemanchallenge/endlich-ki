@@ -42,7 +42,6 @@
             <source src="/videos/tv-beitrag.mp4" type="video/mp4">
         </video>
         <button type="button" class="lp-unmute" id="lpUnmute">&#128266; Ton an</button>
-        <img class="lp-lastframe" id="lpLast" src="/bilder/tv-beitrag-ende.webp" alt="" hidden>
         <button type="button" class="lp-replay" id="lpReplay" aria-label="Video erneut abspielen" hidden>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
         </button>
@@ -91,24 +90,15 @@
         restart();
         b.hidden = true;
     });
-    // Kurz vor dem Ende anhalten, damit der letzte Frame stehen bleibt (nach 'ended' wird er teils schwarz).
-    // Native Controls dann ausblenden (sonst zeigt Mobile einen eigenen Play-Button), nur Replay-Button.
+    // Am Ende: Replay-Button in der Mitte, native Controls weg (sonst zeigt Mobile einen eigenen Play-Button).
     var done = false;
-    function finish() {
-        if (done) return;
+    v.addEventListener('ended', function () {
         done = true;
-        v.pause();
         v.controls = false;
-        c.hidden = false;
         r.hidden = false;
-    }
-    v.addEventListener('timeupdate', function () {
-        if (v.duration && !done && v.currentTime >= v.duration - 0.15) finish();
     });
-    v.addEventListener('ended', finish);
     function restart() {
         done = false;
-        c.hidden = true;
         r.hidden = true;
         v.controls = true;
         v.currentTime = 0;
