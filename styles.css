@@ -1031,7 +1031,7 @@ header::before {
     animation: pulse 2.2s ease-in-out infinite;
 }
 .lp-unmute[hidden] { display: none; }
-.lp-lastframe { position: absolute; pointer-events: none; inset: 0; width: 100%; height: 100%; }
+.lp-lastframe { position: absolute; pointer-events: none; object-fit: cover; -webkit-touch-callout: none; inset: 0; width: 100%; height: 100%; }
 .lp-lastframe[hidden] { display: none; }
 .lp-replay {
     position: absolute;

@@ -42,7 +42,7 @@
             <source src="/videos/tv-beitrag.mp4" type="video/mp4">
         </video>
         <button type="button" class="lp-unmute" id="lpUnmute">&#128266; Ton an</button>
-        <canvas class="lp-lastframe" id="lpLast" hidden></canvas>
+        <img class="lp-lastframe" id="lpLast" src="/bilder/tv-beitrag-ende.webp" alt="" hidden>
         <button type="button" class="lp-replay" id="lpReplay" aria-label="Video erneut abspielen" hidden>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
         </button>
@@ -102,21 +102,8 @@
         c.hidden = false;
         r.hidden = false;
     }
-    // Letzten Frame in ein Canvas kopieren: bleibt sichtbar, egal wie der Browser das Video nach dem Ende rendert.
-    var c = document.getElementById('lpLast');
-    function grab() {
-        var w = v.videoWidth, h = v.videoHeight;
-        if (!w || !h) return;
-        var cw = v.clientWidth, ch = v.clientHeight;
-        if (c.width !== cw || c.height !== ch) { c.width = cw; c.height = ch; }
-        var sc = Math.max(cw / w, ch / h);
-        var dw = w * sc, dh = h * sc;
-        c.getContext('2d').drawImage(v, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
-    }
     v.addEventListener('timeupdate', function () {
-        if (!v.duration || done) return;
-        if (v.currentTime >= v.duration - 1) grab();
-        if (v.currentTime >= v.duration - 0.15) finish();
+        if (v.duration && !done && v.currentTime >= v.duration - 0.15) finish();
     });
     v.addEventListener('ended', finish);
     function restart() {
@@ -128,6 +115,20 @@
         v.play();
     }
     r.addEventListener('click', restart);
+    // Gedrückt halten (nicht in der Steuerleiste unten) = 2x Tempo, nur solange gehalten.
+    var box = v.parentNode, holdTimer = null, fast = false;
+    function endHold() {
+        clearTimeout(holdTimer);
+        if (fast) { fast = false; v.playbackRate = 1; }
+    }
+    box.addEventListener('pointerdown', function (e) {
+        if (e.target.closest('button') || v.paused || done) return;
+        var rect = box.getBoundingClientRect();
+        if (rect.bottom - e.clientY < 60) return;
+        holdTimer = setTimeout(function () { fast = true; v.playbackRate = 2; }, 350);
+    });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (n) { box.addEventListener(n, endHold); });
+    box.addEventListener('contextmenu', function (e) { e.preventDefault(); });
     // Sobald jemand über die Player-Steuerung Ton macht, Button ausblenden.
     v.addEventListener('volumechange', function () { if (!v.muted) b.hidden = true; });
     // Autoplay blockiert (z. B. Stromsparmodus): Button überflüssig, Poster + Play übernehmen.
