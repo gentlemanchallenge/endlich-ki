@@ -87,17 +87,31 @@
     // "Ton an": Video von vorne starten, mit Ton.
     b.addEventListener('click', function () {
         v.muted = false;
-        v.currentTime = 0;
-        v.play();
+        restart();
         b.hidden = true;
     });
-    // Am Ende bleibt der letzte Frame stehen, Replay-Button in der Mitte.
-    v.addEventListener('ended', function () { r.hidden = false; });
-    v.addEventListener('play', function () { r.hidden = true; });
-    r.addEventListener('click', function () {
+    // Kurz vor dem Ende anhalten, damit der letzte Frame stehen bleibt (nach 'ended' wird er teils schwarz).
+    // Native Controls dann ausblenden (sonst zeigt Mobile einen eigenen Play-Button), nur Replay-Button.
+    var done = false;
+    function finish() {
+        if (done) return;
+        done = true;
+        v.pause();
+        v.controls = false;
+        r.hidden = false;
+    }
+    v.addEventListener('timeupdate', function () {
+        if (v.duration && v.currentTime >= v.duration - 0.15) finish();
+    });
+    v.addEventListener('ended', finish);
+    function restart() {
+        done = false;
+        r.hidden = true;
+        v.controls = true;
         v.currentTime = 0;
         v.play();
-    });
+    }
+    r.addEventListener('click', restart);
     // Sobald jemand über die Player-Steuerung Ton macht, Button ausblenden.
     v.addEventListener('volumechange', function () { if (!v.muted) b.hidden = true; });
     // Autoplay blockiert (z. B. Stromsparmodus): Button überflüssig, Poster + Play übernehmen.
